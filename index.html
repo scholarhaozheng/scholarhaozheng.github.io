@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hao Zheng - Homepage</title>
+    <!-- 浏览器标签页图标 (Favicon) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+    <!-- Font Awesome 图标库 (用于按钮图标) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* --- 页面整体风格 --- */
         body {
@@ -94,6 +98,28 @@
             font-size: 1.1em;
             color: #495057;
         }
+
+        /* --- 仿照 Kuan Fang 的按钮样式 --- */
+        .button-group {
+            margin-top: 15px;
+        }
+        .button-icon {
+            background-color: transparent;
+            border: none;
+            color: #333;
+            padding: 5px;
+            margin-right: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            text-decoration: none;
+            font-family: 'Times New Roman', Georgia, serif;
+        }
+        .button-icon:hover {
+            color: #0056b3;
+        }
+        .button-icon i {
+            margin-right: 5px; /* 图标和文字的间距 */
+        }
         
         /* --- 区块标题 --- */
         h2 {
@@ -127,11 +153,24 @@
             font-weight: bold;
             font-size: 1.1em;
         }
+        .item-subtitle {
+            font-style: italic;
+            color: #6c757d;
+        }
         .right-float {
             float: right;
             font-style: normal;
             color: #6c757d;
         }
+        .description-list {
+            list-style-type: disc;
+            padding-left: 25px;
+            margin-top: 10px;
+        }
+        .description-list li {
+            margin-bottom: 8px;
+        }
+
 
         /* --- 论文/项目列表 --- */
         .publication-item {
@@ -176,6 +215,7 @@
             margin-top: 5px;
             font-size: 0.9em;
             color: #333;
+            text-decoration: none;
         }
         .publication-links a:hover {
             background-color: #e0e0e0;
@@ -221,9 +261,17 @@
                 <h1>Hao Zheng</h1>
                 <p>
                     Email: <a href="mailto:zhengh22@mails.tsinghua.edu.cn">zhengh22@mails.tsinghua.edu.cn</a> | <a href="mailto:scholarhaozheng@gmail.com">scholarhaozheng@gmail.com</a><br>
-                    GitHub: <a href="https://github.com/scholarhaozheng" target="_blank">scholarhaozheng</a><br>
                     Phone: +86 157 1112 0980
                 </p>
+                <div class="button-group">
+                    <a href="https://github.com/scholarhaozheng" class="button-icon" target="_blank"><i class="fa-brands fa-github"></i>GitHub</a>
+                    |
+                    <!-- 将下面的 href="#" 替换为您的谷歌学术链接 -->
+                    <a href="#" class="button-icon" target="_blank"><i class="fa-brands fa-google-scholar"></i>Scholar</a>
+                    |
+                    <!-- 将下面的 href="#" 替换为您的CV文件链接 -->
+                    <a href="#" class="button-icon"><i class="fa-solid fa-file-pdf"></i>CV</a>
+                </div>
             </div>
         </section>
 
@@ -257,7 +305,7 @@
                         <p class="publication-meta">Submitted to Transportation Research Part C <span class="right-float">Major Revision: 09/2025</span></p>
                         <div class="publication-links"><a href="https://github.com/scholarhaozheng/KNOWCAST" target="_blank">[Code]</a></div>
                         <div class="contribution">
-                            <p><strong>Paper's Contribution:</strong> Proposed a novel deep learning framework that embeds transportation models...to jointly forecast metro OD and path flows...</p>
+                            <p><strong>Paper's Contribution:</strong> Proposed a novel deep learning framework that embeds transportation models (trip generation, distribution, assignment) to jointly forecast metro OD and path flows, leveraging intermediate path-level features to ensure their mathematical consistency and improve accuracy.</p>
                             <p><strong>My Contribution:</strong> Led model development, coding, experimental validation, and manuscript writing.</p>
                         </div>
                     </div>
@@ -270,7 +318,7 @@
                         <p class="publication-meta">Accepted by the TRB 105th Annual Meeting, 2026 <span class="right-float">Accepted: 09/2025</span></p>
                         <div class="publication-links"><a href="https://github.com/scholarhaozheng/Software-Package-for-Hybrid-Route-Planning-of-Same-Day-and-Regular-Deliveries-in-Space-Time-Networks" target="_blank">[Code]</a></div>
                          <div class="contribution">
-                            <p><strong>Paper's Contribution:</strong> Proposed LT-ADR, a novel logistic system for multi-modal urban delivery that jointly optimizes truck and robot routes...</p>
+                            <p><strong>Paper's Contribution:</strong> Proposed LT-ADR, a novel logistic system for multi-modal urban delivery that jointly optimizes truck and robot routes for both regular and instant express services. The system is modeled on a multilayer space-time network and solved by a bespoke column-generation algorithm, demonstrating significant improvements in efficiency and computational speed over commercial solvers.</p>
                             <p><strong>My Contribution:</strong> Led model development, coding, experimental validation, and manuscript writing.</p>
                         </div>
                     </div>
@@ -294,7 +342,7 @@
                         <p class="publication-authors"><strong>Hao Zheng</strong>, Han Zheng*, George A. Giannopoulos.</p>
                         <p class="publication-meta">To be submitted to Transportation Research Part C <span class="right-float">12/2025</span></p>
                          <div class="contribution">
-                            <p><strong>Paper's Contribution:</strong> Proposed DISCERN, a novel framework that calibrates the behavioral parameters of traditional Discrete Choice Models (DCMs) using large-scale, macroscopic data...</p>
+                            <p><strong>Paper's Contribution:</strong> Proposed DISCERN, a novel framework that calibrates the behavioral parameters of traditional Discrete Choice Models (DCMs) using large-scale, macroscopic data. This is achieved by embedding a theory-driven DCM within a deep learning architecture, using backpropagation on a macro-level predictive task to infer latent micro-level parameters, thus bridging the gap between micro-behavioral theory and macro-empirical validity.</p>
                             <p><strong>My Contribution:</strong> Led model development, coding, experimental validation, and manuscript writing.</p>
                         </div>
                     </div>
@@ -307,7 +355,7 @@
                         <p class="publication-meta">To be submitted to Road Materials and Pavement Design <span class="right-float">10/2025</span></p>
                         <div class="publication-links"><a href="https://github.com/scholarhaozheng/Pave-ML-Multi-Task-Learning-for-Pavement-Performance-Indicators" target="_blank">[Code]</a></div>
                         <div class="contribution">
-                            <p><strong>Paper's Contribution:</strong> Proposed a multi-staged, multi-task learning framework to overcome data scarcity in pavement performance prediction...</p>
+                            <p><strong>Paper's Contribution:</strong> Proposed a multi-staged, multi-task learning framework to overcome data scarcity in pavement performance prediction. The approach involves pre-training a deep learning model on a large-scale public dataset (LTPP) and then progressively adapting it to a smaller, local dataset (Fuzhou) through a phased training strategy with parameter freezing, enabling reliable prediction of multiple performance indicators (IRI, RD, and PCI).</p>
                             <p><strong>My Contribution:</strong> Led model development, coding, experimental validation, and manuscript writing.</p>
                         </div>
                     </div>
@@ -318,9 +366,9 @@
                         <p class="publication-title">An Integrated Topology Reconstruction and Branch-and-Price Method for Maintenance-Vehicle Route Planning.</p>
                         <p class="publication-authors"><strong>Hao Zheng</strong>, Yian Zhao, Jiantao Li, Runhua Guo*.</p>
                         <p class="publication-meta">To be submitted to International Journal of Pavement Engineering <span class="right-float">10/2025</span></p>
-                        <div class="publication-links"><a href="https://github.com/scholarhaozheng/Decision_Making_for_Pavement_Maintenance_Strategies_and_a_VRP_Model_for_Execution" target="_blank">[Code]</a></div>
+                        <div class="publication-links"><a href="https://github.com/scholarhaozheng/Decision_Making_for_Pavement_Maintenance_Strategies_and_a_VRP_model_for_Execution" target="_blank">[Code]</a></div>
                          <div class="contribution">
-                            <p><strong>Paper's Contribution:</strong> Developed an integrated framework for maintenance-vehicle route planning that addresses the challenge of representing linear road segments...</p>
+                            <p><strong>Paper's Contribution:</strong> Developed an integrated framework for maintenance-vehicle route planning that addresses the challenge of representing linear road segments within a node-based network graph. The method first introduces a novel topology reconstruction technique, using a three-node (entry, virtual, exit) structure to model maintenance tasks. It then formulates the scheduling challenge as a Vehicle Routing Problem with Time Windows (VRPTW) and solves it efficiently using a custom Branch-and-Price algorithm.</p>
                             <p><strong>My Contribution:</strong> Led model development, coding, experimental validation, and manuscript writing.</p>
                         </div>
                     </div>
@@ -359,7 +407,7 @@
                             <a href="https://github.com/scholarhaozheng/A-Multi-Type-Customized-Shuttle-Bus-Route-Planning-Software" target="_blank">[Code]</a>
                         </div>
                          <div class="contribution">
-                            <p><strong>Paper's Contribution:</strong> Proposed a customized shuttle bus transportation model to address instantaneous mega-traffic flows with uneven demand...</p>
+                            <p><strong>Paper's Contribution:</strong> Proposed a customized shuttle bus transportation model to address instantaneous mega-traffic flows with uneven demand. The problem is formulated as a Pickup and Delivery Problem with Time Windows and Transfers (PDPTWT) and solved by a novel heuristic algorithm combining Tabu Search and ALNS. The method demonstrated significant computational speedup over commercial solvers and achieved substantial reductions in fleet cost, vehicle waiting time, and passenger waiting time in reality-based case studies.</p>
                             <p><strong>My Contribution:</strong> Led model development, coding, experimental validation, and manuscript writing.</p>
                         </div>
                     </div>
@@ -408,23 +456,52 @@
             <ul>
                 <li>
                     <p><span class="item-title">A Bilevel Optimization Framework for Tolling Strategy in Autonomous Networks (Student Researcher)</span> <span class="right-float">06/2025 -- 10/2025</span></p>
-                    <p style="font-style: italic; color: #6c757d;">MIT-UF-NEU Summer Research Camp | Supervisor: Prof. Jinhua Zhao, Dr. Xuan Jiang</p>
+                    <p class="item-subtitle">MIT-UF-NEU Summer Research Camp | Supervisor: Prof. Jinhua Zhao, Dr. Xuan Jiang</p>
+                    <ul class="description-list">
+                        <li>Project: Understanding different cooperation patterns between AV companies and road infrastructure companies;</li>
+                        <li>Designed and implemented an end-to-end bi-level optimization framework to find optimal tolling strategies by modeling the interaction between infrastructure operators and autonomous vehicle fleets;</li>
+                        <li>Developed the upper-level model using Python to create an automated optimization loop that configures and executes a traffic simulator, processes results, and iteratively updates tolling policies based on revenue and congestion feedback;</li>
+                        <li>Re-engineered a high-performance C++/CUDA traffic simulator to serve as the lower-level model, implementing toll-responsive logic and a cost-benefit analysis for agent lane-changing behavior;</li>
+                        <li>Verified the framework's effectiveness while generating substantial revenue across various tested scenarios.</li>
+                    </ul>
                 </li>
                  <li>
                     <p><span class="item-title">Digital Platform for Intelligent Road Asset Management (Code Writing: Prediction & Decision Models)</span> <span class="right-float">2023--2025</span></p>
-                    <p style="font-style: italic; color: #6c757d;">Project: Research on Integration and Application of Intelligent Air-Ground Equipment in Digital Transportation Management</p>
+                    <p class="item-subtitle">Project: Research on Integration and Application of Intelligent Air-Ground Equipment in Digital Transportation Management</p>
+                     <ul class="description-list">
+                        <li>Developed the core algorithms for a comprehensive digital road asset management platform, built on a SpringBoot + VUE framework.</li>
+                        <li>Designed and implemented the road performance prediction module, creating a deep learning model using GRU and Attention mechanisms that incorporates climate, traffic, and material data. Trained the model on the LTPP dataset.</li>
+                        <li>Built the maintenance optimization module, which uses a mathematical model under dual budget and performance constraints to generate optimal, fine-grained maintenance strategies.</li>
+                    </ul>
                 </li>
                  <li>
                     <p><span class="item-title">Strategic Framework for Green Transportation & Infrastructure Management (Researcher & Contributing Author)</span> <span class="right-float">2022--2024</span></p>
-                     <p style="font-style: italic; color: #6c757d;">Project: Coordinating Ecological Protection with Carbon Peaking and Neutrality Goals... | Supervisor: Prof. Runhua Guo</p>
+                     <p class="item-subtitle">Project: Coordinating Ecological Protection with Carbon Peaking and Neutrality Goals in the Yellow River Basin | Supervisor: Prof. Runhua Guo</p>
+                     <ul class="description-list">
+                        <li>Researched and formulated technical roadmaps for the resource utilization of solid waste in highway construction, focusing on recycled asphalt and industrial by-products;</li>
+                        <li>Analyzed infrastructure lifecycle management strategies, including intelligent inspection methods, pavement performance prediction, and maintenance decision-making models;</li>
+                        <li>Under the primary guidance of Prof. Guo, authored two key chapters (Chapter 3: Green Construction; Chapter 4: Green Operations & Maintenance) of the project's resulting book, published by the China Communications Press.</li>
+                    </ul>
                 </li>
                 <li>
                     <p><span class="item-title">Comparative Analysis of Road Design Standards for Belt and Road Projects (Research Analyst)</span> <span class="right-float">2023</span></p>
-                     <p style="font-style: italic; color: #6c757d;">Project: Differentiated Research on Engineering Projects along the Belt and Road: Sri Lanka | Supervisor: Prof. Runhua Guo</p>
+                     <p class="item-subtitle">Project: Differentiated Research on Engineering Projects along the Belt and Road: Sri Lanka | Supervisor: Prof. Runhua Guo</p>
+                     <ul class="description-list">
+                        <li>Conducted a comparative analysis of highway design standards between China and key Belt and Road countries (e.g., Sri Lanka, Pakistan) to provide technical guidance for international projects;</li>
+                        <li>Conducted a comparative analysis of the standards for highway construction and acceptance between China and Sri Lanka, with a focus on asphalt pavement design philosophies, to formulate conversion methods and investigate universal acceptance criteria;</li>
+                        <li>Authored a technical report identifying critical differences in design parameters (e.g., standard axle loads, material specifications, reliability levels) to facilitate the adaptation of Chinese engineering practices abroad.</li>
+                    </ul>
                 </li>
                 <li>
                     <p><span class="item-title">Optimizing Air-Rail Intermodal Transport: A Case Study of Daxing Airport (Project Leader)</span> <span class="right-float">2020 -- 2022</span></p>
-                     <p style="font-style: italic; color: #6c757d;">National University Student Innovation & Entrepreneurship Development Program | Supervisor: Prof. Yuyan Tan</p>
+                     <p class="item-subtitle">National University Student Innovation & Entrepreneurship Development Program | Supervisor: Prof. Yuyan Tan</p>
+                     <ul class="description-list">
+                        <li>Led a student team to design a two-stage optimization framework aimed at improving the end-to-end efficiency of air-rail passenger transfers.</li>
+                        <li>Formulated a multi-objective optimization model to adjust high-speed rail timetables, maximizing flight connection opportunities while minimizing schedule disruptions.</li>
+                        <li>Designed a Customized Bus routing solution for the airport-station connection, modeling it as a VRPTWTS and developing a hybrid Adaptive Large Neighborhood Search and Tabu Search (ALNS-TS) algorithm to solve it.</li>
+                        <li>Implemented the solution as the Multi-Type Customized Shuttle Bus Route Planning Software, for which I was granted a national software copyright as the sole holder (Reg. No. 2021SR1289113).</li>
+                        <li>The project received a national-level award upon completion, and the research was accepted for publication in the World Transport Convention (WTC) proceedings.</li>
+                    </ul>
                 </li>
             </ul>
         </section>
@@ -439,6 +516,8 @@
                  <li><p>Awarded the Zhixing Scholarship (formerly the President's Scholarship) (10/16800) <span class="right-float">12/2020</span></p></li>
                  <li><p>Awarded the Zhan Tianyou Scholarship (2/1520) (Received twice) <span class="right-float">12/2021, 12/2020</span></p></li>
                  <li><p>Awarded the Excellent Academic Scholarship (Received three times) <span class="right-float">12/2021, 12/2020, 12/2019</span></p></li>
+                 <li><p>Recognized as a "University-Level Merit Student" (Received twice) <span class="right-float">12/2021, 12/2020</span></p></li>
+                 <li><p>Recognized as an "Outstanding Youth League Member at the University Level" (Received twice) <span class="right-float">05/2021, 05/2020</span></p></li>
              </ul>
         </section>
 
