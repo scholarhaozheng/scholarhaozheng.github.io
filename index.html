@@ -13,6 +13,7 @@
             padding: 60px 0 0 0; /* 为固定的导航栏留出空间 */
             background-color: #f8f9fa;
             color: #212529;
+            scroll-behavior: smooth; /* 平滑滚动 */
         }
         .container {
             max-width: 950px;
@@ -44,16 +45,22 @@
             width: 100%;
             max-width: 950px;
             padding: 0 20px;
+            overflow-x: auto; /* 在小屏幕上可以滚动 */
         }
         nav .nav-name {
             font-size: 1.5em;
             font-weight: bold;
+            white-space: nowrap;
+        }
+        nav .nav-links {
+            display: flex;
         }
         nav a {
             color: #333;
             text-decoration: none;
-            padding: 10px 15px;
-            font-size: 1.1em;
+            padding: 10px 12px;
+            font-size: 1em;
+            white-space: nowrap;
         }
         nav a:hover {
             color: #0056b3;
@@ -64,6 +71,7 @@
             display: flex;
             align-items: center;
             margin-bottom: 30px;
+            padding-top: 20px; /* 为跳转留出空间 */
         }
         .profile-photo {
             flex-shrink: 0;
@@ -96,13 +104,36 @@
             padding-bottom: 8px;
             margin-top: 40px;
             margin-bottom: 25px;
+            padding-top: 70px; /* 为锚点跳转留出顶部空间 */
+            margin-top: -60px; /* 抵消padding-top的影响 */
+        }
+        h3 {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #495057;
+            margin-top: 25px;
+            margin-bottom: 15px;
         }
         
-        /* --- 论文/项目列表 --- */
-        .publication-list {
+        /* --- 列表通用样式 --- */
+        ul {
             padding: 0;
             list-style: none;
         }
+        li {
+            margin-bottom: 15px;
+        }
+        .item-title {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .right-float {
+            float: right;
+            font-style: normal;
+            color: #6c757d;
+        }
+
+        /* --- 论文/项目列表 --- */
         .publication-item {
             display: flex;
             margin-bottom: 30px;
@@ -150,21 +181,16 @@
             background-color: #e0e0e0;
             text-decoration: none;
         }
+        .contribution {
+            font-size: 0.95em;
+            margin-top: 8px;
+            padding-left: 15px;
+            border-left: 2px solid #e9ecef;
+        }
+        .contribution p {
+            margin: 5px 0;
+        }
         
-        /* 其他区块 */
-        .section-list-item {
-            margin-bottom: 15px;
-        }
-        .item-title {
-            font-weight: bold;
-            font-size: 1.1em;
-        }
-        .right-float {
-            float: right;
-            font-style: normal;
-            color: #6c757d;
-        }
-
     </style>
 </head>
 <body>
@@ -173,10 +199,13 @@
     <nav>
         <div class="nav-container">
             <a href="#about" class="nav-name">Hao Zheng</a>
-            <div>
+            <div class="nav-links">
                 <a href="#education">Education</a>
+                <a href="#manuscripts">Manuscripts</a>
                 <a href="#publications">Publications</a>
                 <a href="#research-experience">Research</a>
+                <a href="#projects">Projects</a>
+                <a href="#awards">Awards</a>
                 <a href="#skills">Skills</a>
             </div>
         </div>
@@ -186,16 +215,12 @@
         <!-- 个人信息 -->
         <section id="about" class="profile-section">
             <div class="profile-photo">
-                <!-- 如何插入图片：
-                     1. 将您的照片上传到此项目的 GitHub 仓库中，例如命名为 profile.jpg。
-                     2. 将下面的 src="..." 替换为 src="profile.jpg"。
-                -->
-                <img src="https://placehold.co/200x200/e9ecef/495057?text=Your+Photo" alt="Hao Zheng's photo">
+                <img src="Hao_Zheng_photo.jpg" alt="Hao Zheng's photo">
             </div>
             <div class="profile-info">
                 <h1>Hao Zheng</h1>
                 <p>
-                    Email: <a href="mailto:zhengh22@mails.tsinghua.edu.cn">zhengh22@mails.tsinghua.edu.cn</a><br>
+                    Email: <a href="mailto:zhengh22@mails.tsinghua.edu.cn">zhengh22@mails.tsinghua.edu.cn</a> | <a href="mailto:scholarhaozheng@gmail.com">scholarhaozheng@gmail.com</a><br>
                     GitHub: <a href="https://github.com/scholarhaozheng" target="_blank">scholarhaozheng</a><br>
                     Phone: +86 157 1112 0980
                 </p>
@@ -205,101 +230,223 @@
         <section id="education">
             <h2>Education</h2>
             <ul>
-                <li class="section-list-item">
+                <li>
                     <p>
-                        <span class="item-title">Tsinghua University</span>, Master of Science, GPA: 3.86
+                        <span class="item-title">Tsinghua University</span>, School of Civil Engineering, Master of Science, GPA: 3.86
                         <span class="right-float">09/2022 - 06/2025</span>
                     </p>
                 </li>
-                <li class="section-list-item">
+                <li>
                     <p>
-                        <span class="item-title">Beijing Jiaotong University</span>, Bachelor of Engineering, GPA: 3.80
+                        <span class="item-title">Beijing Jiaotong University</span>, School of Traffic and Transportation, Bachelor of Engineering, GPA: 3.80
                         <span class="right-float">09/2018 - 06/2022</span>
                     </p>
                 </li>
             </ul>
         </section>
 
-        <section id="publications">
-            <h2>Publications</h2>
+        <section id="manuscripts">
+            <h2>Manuscripts in Progress</h2>
+            <h3>Accepted & Under Revision (1 Accepted, 2 Under Revision)</h3>
             <ul class="publication-list">
-                <!-- 这是一个论文条目的例子，您可以复制整个 <li class="publication-item">...</li> 结构来添加更多论文 -->
                 <li class="publication-item">
-                    <div class="publication-image">
-                        <!-- 如何插入论文配图：
-                             1. 将配图 (可以是 .png, .jpg, .gif) 上传到 GitHub 仓库。
-                             2. 将下面的 src="..." 替换为图片的文件名，例如 src="knowcast.png"。
-                        -->
-                        <img src="https://placehold.co/160x100/e9ecef/495057?text=KNOWCAST" alt="KNOWCAST paper thumbnail">
-                    </div>
+                    <div class="publication-image"><img src="KNOWCAST_Figure.png" alt="KNOWCAST thumbnail"></div>
                     <div class="publication-details">
                         <p class="publication-title">KNOWCAST: Domain-Knowledge-Integrated Deep Learning for Metro OD and Path Flow Joint Forecasting.</p>
                         <p class="publication-authors"><strong>Hao Zheng</strong>, Han Zheng*, George Giannopoulos.</p>
-                        <p class="publication-meta">Submitted to Transportation Research Part C (Major Revision: 09/2025)</p>
-                        <div class="publication-links">
-                            <!-- 如何添加链接：将下面的 href="#" 替换为您的实际链接 -->
-                            <a href="#" target="_blank">[PDF]</a>
-                            <a href="https://github.com/scholarhaozheng/KNOWCAST" target="_blank">[Code]</a>
-                            <a href="#" target="_blank">[Website]</a>
+                        <p class="publication-meta">Submitted to Transportation Research Part C <span class="right-float">Major Revision: 09/2025</span></p>
+                        <div class="publication-links"><a href="https://github.com/scholarhaozheng/KNOWCAST" target="_blank">[Code]</a></div>
+                        <div class="contribution">
+                            <p><strong>Paper's Contribution:</strong> Proposed a novel deep learning framework that embeds transportation models...to jointly forecast metro OD and path flows...</p>
+                            <p><strong>My Contribution:</strong> Led model development, coding, experimental validation, and manuscript writing.</p>
                         </div>
                     </div>
                 </li>
-
                 <li class="publication-item">
-                    <div class="publication-image">
-                         <img src="https://placehold.co/160x100/e9ecef/495057?text=Logistics" alt="Logistics paper thumbnail">
-                    </div>
+                     <div class="publication-image"><img src="Logit_Figure.png" alt="Logistics thumbnail"></div>
                     <div class="publication-details">
                         <p class="publication-title">Integrated Routing of Trucks and Robots for Multi-Modal Urban Express Logistics.</p>
                         <p class="publication-authors"><strong>Hao Zheng</strong>, Han Zheng*, George Giannopoulos.</p>
-                        <p class="publication-meta">Accepted by the TRB 105th Annual Meeting, 2026 (Accepted: 09/2025)</p>
-                         <div class="publication-links">
-                            <a href="#" target="_blank">[PDF]</a>
-                            <a href="https://github.com/scholarhaozheng/Software-Package-for-Hybrid-Route-Planning-of-Same-Day-and-Regular-Deliveries-in-Space-Time-Networks" target="_blank">[Code]</a>
+                        <p class="publication-meta">Accepted by the TRB 105th Annual Meeting, 2026 <span class="right-float">Accepted: 09/2025</span></p>
+                        <div class="publication-links"><a href="https://github.com/scholarhaozheng/Software-Package-for-Hybrid-Route-Planning-of-Same-Day-and-Regular-Deliveries-in-Space-Time-Networks" target="_blank">[Code]</a></div>
+                         <div class="contribution">
+                            <p><strong>Paper's Contribution:</strong> Proposed LT-ADR, a novel logistic system for multi-modal urban delivery that jointly optimizes truck and robot routes...</p>
+                            <p><strong>My Contribution:</strong> Led model development, coding, experimental validation, and manuscript writing.</p>
                         </div>
                     </div>
                 </li>
-                
-                <li class="publication-item">
-                    <div class="publication-image">
-                         <img src="https://placehold.co/160x100/e9ecef/495057?text=Customized+Bus" alt="Customized Bus paper thumbnail">
+                 <li class="publication-item">
+                     <div class="publication-image"><img src="https://placehold.co/160x100/e9ecef/495057?text=Vibration" alt="Vibration thumbnail"></div>
+                    <div class="publication-details">
+                        <p class="publication-title">Vehicle Vibration Modeling via Road Profile Reconstruction and Simulation.</p>
+                        <p class="publication-authors">Jiantao Li, Yian Zhao, <strong>Hao Zheng</strong>, Runhua Guo.</p>
+                        <p class="publication-meta">Submitted to Road Materials and Pavement Design <span class="right-float">Revised: 09/2025</span></p>
                     </div>
+                </li>
+            </ul>
+            
+            <h3>In Preparation</h3>
+            <ul class="publication-list">
+                 <li class="publication-item">
+                     <div class="publication-image"><img src="DISCERN_Figure.png" alt="DISCERN thumbnail"></div>
+                    <div class="publication-details">
+                        <p class="publication-title">DISCERN: Discrete Choice with Embedded Representation Networks.</p>
+                        <p class="publication-authors"><strong>Hao Zheng</strong>, Han Zheng*, George A. Giannopoulos.</p>
+                        <p class="publication-meta">To be submitted to Transportation Research Part C <span class="right-float">12/2025</span></p>
+                         <div class="contribution">
+                            <p><strong>Paper's Contribution:</strong> Proposed DISCERN, a novel framework that calibrates the behavioral parameters of traditional Discrete Choice Models (DCMs) using large-scale, macroscopic data...</p>
+                            <p><strong>My Contribution:</strong> Led model development, coding, experimental validation, and manuscript writing.</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="publication-item">
+                     <div class="publication-image"><img src="Multi-Staged Multi-Task Learning for Reliable Pavement Time-Series Prediction with Data Supplementation_Plan.png" alt="Pave-ML thumbnail"></div>
+                    <div class="publication-details">
+                        <p class="publication-title">Multi-Staged Multi-Task Learning for Reliable Pavement Time-Series Prediction with Data Supplementation.</p>
+                        <p class="publication-authors"><strong>Hao Zheng</strong>, Runhua Guo*.</p>
+                        <p class="publication-meta">To be submitted to Road Materials and Pavement Design <span class="right-float">10/2025</span></p>
+                        <div class="publication-links"><a href="https://github.com/scholarhaozheng/Pave-ML-Multi-Task-Learning-for-Pavement-Performance-Indicators" target="_blank">[Code]</a></div>
+                        <div class="contribution">
+                            <p><strong>Paper's Contribution:</strong> Proposed a multi-staged, multi-task learning framework to overcome data scarcity in pavement performance prediction...</p>
+                            <p><strong>My Contribution:</strong> Led model development, coding, experimental validation, and manuscript writing.</p>
+                        </div>
+                    </div>
+                </li>
+                 <li class="publication-item">
+                     <div class="publication-image"><img src="An Integrated Topology Reconstruction and Branch-and-Price Method for Maintenance-Vehicle Route Planning_Figure.png" alt="VRP thumbnail"></div>
+                    <div class="publication-details">
+                        <p class="publication-title">An Integrated Topology Reconstruction and Branch-and-Price Method for Maintenance-Vehicle Route Planning.</p>
+                        <p class="publication-authors"><strong>Hao Zheng</strong>, Yian Zhao, Jiantao Li, Runhua Guo*.</p>
+                        <p class="publication-meta">To be submitted to International Journal of Pavement Engineering <span class="right-float">10/2025</span></p>
+                        <div class="publication-links"><a href="https://github.com/scholarhaozheng/Decision_Making_for_Pavement_Maintenance_Strategies_and_a_VRP_Model_for_Execution" target="_blank">[Code]</a></div>
+                         <div class="contribution">
+                            <p><strong>Paper's Contribution:</strong> Developed an integrated framework for maintenance-vehicle route planning that addresses the challenge of representing linear road segments...</p>
+                            <p><strong>My Contribution:</strong> Led model development, coding, experimental validation, and manuscript writing.</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <section id="publications">
+            <h2>Publications</h2>
+            <h3>Book</h3>
+            <ul>
+                <li>
+                    <p>Huapu Lu, Fang Wang, Runhua Guo, Sa Xu, et al., and <strong>Hao Zheng</strong>. <em>Green Development Paths and Strategies for Comprehensive Transportation in Ningxia</em>. <span class="right-float">2024</span></p>
+                </li>
+            </ul>
+
+            <h3>Published Journal & Conference Papers (4 Papers)</h3>
+            <ul class="publication-list">
+                <li class="publication-item">
+                    <div class="publication-image"><img src="https://placehold.co/160x100/e9ecef/495057?text=IEEE+T-ITS" alt="IEEE T-ITS thumbnail"></div>
+                    <div class="publication-details">
+                        <p class="publication-title">Improving Synchronization in High-Speed Railway and Air Intermodality: Integrated Train Timetable Rescheduling and Passenger Flow Forecasting.</p>
+                        <p class="publication-authors">Yuyan Tan, Yibo Li, et al., and <strong>Hao Zheng</strong>.</p>
+                        <p class="publication-meta">IEEE Transactions on Intelligent Transportation Systems, 2022</p>
+                        <div class="publication-links"><a href="https://doi.org/10.1109/TITS.2021.3137410" target="_blank">[Paper Link]</a></div>
+                    </div>
+                </li>
+                <li class="publication-item">
+                    <div class="publication-image"><img src="Study on Customized Shuttle Transit Mode Responding to Spatiotemporal Inhomogeneous Demand in Super-Peak_Figure.png" alt="Customized Bus thumbnail"></div>
                     <div class="publication-details">
                         <p class="publication-title">Study on Customized Shuttle Transit Mode Responding to Spatiotemporal Inhomogeneous Demand in Super-Peak.</p>
                         <p class="publication-authors"><strong>Hao Zheng</strong>, Xingchen Zhang, Junhua Chen.</p>
                         <p class="publication-meta">Inf. 2021, 12:429</p>
-                         <div class="publication-links">
-                            <a href="https://www.mdpi.com/2078-2489/12/10/429" target="_blank">[Paper Link]</a>
+                        <div class="publication-links">
+                            <a href="https://doi.org/10.3390/info12100429" target="_blank">[Paper Link]</a>
                             <a href="https://github.com/scholarhaozheng/A-Multi-Type-Customized-Shuttle-Bus-Route-Planning-Software" target="_blank">[Code]</a>
+                        </div>
+                         <div class="contribution">
+                            <p><strong>Paper's Contribution:</strong> Proposed a customized shuttle bus transportation model to address instantaneous mega-traffic flows with uneven demand...</p>
+                            <p><strong>My Contribution:</strong> Led model development, coding, experimental validation, and manuscript writing.</p>
                         </div>
                     </div>
                 </li>
-                
+                <li class="publication-item">
+                     <div class="publication-image"><img src="https://placehold.co/160x100/e9ecef/495057?text=ICROMA+1" alt="ICROMA thumbnail"></div>
+                    <div class="publication-details">
+                        <p class="publication-title">Coordinated Optimization of High-speed Railway Train Operation Diagram and EMU Routing.</p>
+                        <p class="publication-authors">Yaxuan Li, Yuyan Tan*, Ruxin Wang, <strong>Hao Zheng</strong>.</p>
+                        <p class="publication-meta">The 9th International Conference on Railway Operations Modelling and Analysis (ICROMA), 2021</p>
+                    </div>
+                </li>
+                <li class="publication-item">
+                     <div class="publication-image"><img src="https://placehold.co/160x100/e9ecef/495057?text=ICROMA+2" alt="ICROMA thumbnail"></div>
+                    <div class="publication-details">
+                        <p class="publication-title">Optimizing the Train Timetable for Improving Synchronization in High-Speed Railway and Air Intermodality.</p>
+                        <p class="publication-authors">Qixuan Ren, Yuyan Tan, Tangjian Wei, <strong>Hao Zheng</strong>.</p>
+                        <p class="publication-meta">The 9th International Conference on Railway Operations Modelling and Analysis (ICROMA), 2021</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <section id="theses">
+            <h2>Theses</h2>
+            <ul>
+                <li><p><span class="item-title">Master Thesis:</span> A Comprehensive Full-Process Planning Model for Pavement Performance Forecasting and Maintenance Strategy Implementation under Missing Data Conditions. <span class="right-float">06/2025</span></p></li>
+                <li><p><span class="item-title">Undergraduate Thesis:</span> Customized Bus Planning Method Responding to Spatiotemporal Concentrated Demand in Super-peak. <span class="right-float">06/2022</span></p></li>
+            </ul>
+        </section>
+
+        <section id="projects">
+            <h2>Open Source Projects</h2>
+            <p>Projects continually updated on <a href="https://github.com/scholarhaozheng">github.com/scholarhaozheng</a></p>
+            <ul>
+                <li><p><a href="https://github.com/scholarhaozheng/Pave-ML-Multi-Task-Learning-for-Pavement-Performance-Indicators" target="_blank">Pave-ML-Multi-Task Learning for Pavement Performance Indicators</a> (Python) <span class="right-float">Initial release: 2025</span></p></li>
+                <li><p><a href="https://github.com/scholarhaozheng/Decision_Making_for_Pavement_Maintenance_Strategies_and_a_VRP_Model_for_Execution" target="_blank">Pavement Maintenance Decision-Making and a VRP Model for Execution</a> (Python) <span class="right-float">Initial release: 2025</span></p></li>
+                <li><p><a href="https://github.com/scholarhaozheng/Dynamic_Short-Term_Prediction_of_Urban_Rail_Origin-Destination_Flow" target="_blank">Dynamic Short-Term Prediction of Urban Rail Origin-Destination Flow</a> (Python) <span class="right-float">Initial release: 2024</span></p></li>
+                <li><p><a href="https://github.com/scholarhaozheng/Software-Package-for-Hybrid-Route-Planning-of-Same-Day-and-Regular-Deliveries-in-Space-Time-Networks" target="_blank">Hybrid Route Planning of Same-Day and Regular Deliveries in Space-Time Networks</a> (C#) <span class="right-float">Initial release: 2023</span></p></li>
+                <li><p><a href="https://github.com/scholarhaozheng/A-Multi-Type-Customized-Shuttle-Bus-Route-Planning-Software" target="_blank">A Multi-Type Customized Shuttle Bus Route Planning Software</a> (MATLAB) <span class="right-float">Initial release: 2021</span></p></li>
             </ul>
         </section>
 
         <section id="research-experience">
             <h2>Research Experience</h2>
             <ul>
-                <li class="section-list-item">
+                <li>
                     <p><span class="item-title">A Bilevel Optimization Framework for Tolling Strategy in Autonomous Networks (Student Researcher)</span> <span class="right-float">06/2025 -- 10/2025</span></p>
                     <p style="font-style: italic; color: #6c757d;">MIT-UF-NEU Summer Research Camp | Supervisor: Prof. Jinhua Zhao, Dr. Xuan Jiang</p>
                 </li>
-                 <li class="section-list-item">
+                 <li>
                     <p><span class="item-title">Digital Platform for Intelligent Road Asset Management (Code Writing: Prediction & Decision Models)</span> <span class="right-float">2023--2025</span></p>
+                    <p style="font-style: italic; color: #6c757d;">Project: Research on Integration and Application of Intelligent Air-Ground Equipment in Digital Transportation Management</p>
                 </li>
-                <li class="section-list-item">
+                 <li>
+                    <p><span class="item-title">Strategic Framework for Green Transportation & Infrastructure Management (Researcher & Contributing Author)</span> <span class="right-float">2022--2024</span></p>
+                     <p style="font-style: italic; color: #6c757d;">Project: Coordinating Ecological Protection with Carbon Peaking and Neutrality Goals... | Supervisor: Prof. Runhua Guo</p>
+                </li>
+                <li>
+                    <p><span class="item-title">Comparative Analysis of Road Design Standards for Belt and Road Projects (Research Analyst)</span> <span class="right-float">2023</span></p>
+                     <p style="font-style: italic; color: #6c757d;">Project: Differentiated Research on Engineering Projects along the Belt and Road: Sri Lanka | Supervisor: Prof. Runhua Guo</p>
+                </li>
+                <li>
                     <p><span class="item-title">Optimizing Air-Rail Intermodal Transport: A Case Study of Daxing Airport (Project Leader)</span> <span class="right-float">2020 -- 2022</span></p>
-                     <p style="font-style: italic; color: #6c757d;">National University Student Innovation & Entrepreneurship Development Program</p>
+                     <p style="font-style: italic; color: #6c757d;">National University Student Innovation & Entrepreneurship Development Program | Supervisor: Prof. Yuyan Tan</p>
                 </li>
             </ul>
         </section>
         
+         <section id="awards">
+            <h2>Awards</h2>
+             <ul>
+                 <li><p>Awarded the Second-Class Academic Excellence Scholarship <span class="right-float">2024</span></p></li>
+                 <li><p>Recognized as an "Outstanding Graduate of Beijing Municipality" (19/380) <span class="right-float">06/2022</span></p></li>
+                 <li><p>Awarded the "Outstanding Student in Transportation" by China Institute of Communications Education <span class="right-float">11/2021</span></p></li>
+                 <li><p>Received the Wu Fu-Zhenhua Transportation Education Excellent Student Award (1/1520) <span class="right-float">12/2021</span></p></li>
+                 <li><p>Awarded the Zhixing Scholarship (formerly the President's Scholarship) (10/16800) <span class="right-float">12/2020</span></p></li>
+                 <li><p>Awarded the Zhan Tianyou Scholarship (2/1520) (Received twice) <span class="right-float">12/2021, 12/2020</span></p></li>
+                 <li><p>Awarded the Excellent Academic Scholarship (Received three times) <span class="right-float">12/2021, 12/2020, 12/2019</span></p></li>
+             </ul>
+        </section>
+
         <section id="skills">
             <h2>Skills</h2>
             <ul>
-                <li class="section-list-item"><strong>Programming Skills:</strong> Proficient in MATLAB, C#, Python; Experienced with C++ and GAMS.</li>
-                <li class="section-list-item"><strong>English Proficiency:</strong> TOEFL: 112 (Reading: 30, Listening: 30, Speaking: 25, Writing: 27)</li>
+                <li><strong>Programming Skills:</strong> Proficient in MATLAB, C#, Python; Experienced with C++ and GAMS.</li>
+                <li><strong>English Proficiency:</strong> TOEFL: 112 (Reading: 30, Listening: 30, Speaking: 25, Writing: 27) <span class="right-float">01/2025</span></li>
             </ul>
         </section>
 
