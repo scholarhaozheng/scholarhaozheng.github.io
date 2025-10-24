@@ -412,7 +412,7 @@
                     <div class="publication-details">
                         <p class="publication-title">Multi-Staged Multi-Task Learning for Reliable Pavement Time-Series Prediction with Data Supplementation.</p>
                         <p class="publication-authors"><strong>Hao Zheng</strong>, Runhua Guo*.</p>
-                        <p class="publication-meta">To be submitted to Road Materials and Pavement Design <span class="right-float">10/2025</span></p>
+                        <p class="publication-meta">To be submitted to IEEE Transactions on Intelligent Transportation Systems <span class="right-float">10/2025</span></p>
                         <div class="publication-links"><a href="https://github.com/scholarhaozheng/Pave-ML-Multi-Task-Learning-for-Pavement-Performance-Indicators" target="_blank">[Code]</a></div>
                         <div class="contribution">
                             <p><strong>Paper's Contribution:</strong> Proposed a multi-staged, multi-task learning framework to overcome data scarcity in pavement performance prediction. The approach involves pre-training a deep learning model on a large-scale public dataset (LTPP) and then progressively adapting it to a smaller, local dataset (Fuzhou) through a phased training strategy with parameter freezing, enabling reliable prediction of multiple performance indicators (IRI, RD, and PCI).</p>
@@ -446,7 +446,7 @@
                     <div class="publication-details">
                         <p class="publication-title">Vehicle Vibration Modeling via Road profile Reconstruction and Simulation: Coupled Analysis of IRI, Speed, and Ride Comfort for Driving Assistance</p>
                         <p class="publication-authors">Jiantao Li, Yian Zhao, <strong>Hao Zheng</strong>, Runhua Guo.</p>
-                        <p class="publication-meta">Road Materials and Pavement Design, 2025 (Accepted, in press)</p>
+                        <p class="publication-meta">Road Materials and Pavement Design, 2025 </p>
                         <div class="publication-links">
                             <a href="https://doi.org/10.1080/14680629.2025.2574300" target="_blank">[Paper Link]</a>
                         </div>
@@ -543,16 +543,20 @@
             <h2>Research Experience</h2>
             <ul>
                 <li>
-                    <p><span class="item-title">A Bilevel Optimization Framework for Tolling Strategy in Autonomous Networks (Student Researcher)</span> <span class="right-float">06/2025 -- 10/2025</span></p>
+                    <p><span class="item-title">Developing LPSim: A Bilevel Optimization Framework for Tolling Strategy in Autonomous Networks</span> <span class="right-float">06/2025 -- 10/2025</span></p>
                     <p class="item-subtitle">MIT-UF-NEU Summer Research Camp | Supervisor: Prof. Jinhua Zhao, Dr. Xuan Jiang</p>
+                    <div class="publication-links">
+                    <a href="https://github.com/Xuan-1998/LPSim/pull/24" target="_blank">[Code Contribution]</a>
+                </div>
                     <ul class="description-list">
-                        <li>Project: Understanding different cooperation patterns between AV companies and road infrastructure companies;</li>
-                        <li>Designed and implemented an end-to-end bi-level optimization framework to find optimal tolling strategies by modeling the interaction between infrastructure operators and autonomous vehicle fleets;</li>
-                        <li>Developed the upper-level model using Python to create an automated optimization loop that configures and executes a traffic simulator, processes results, and iteratively updates tolling policies based on revenue and congestion feedback;</li>
-                        <li>Re-engineered a high-performance C++/CUDA traffic simulator to serve as the lower-level model, implementing toll-responsive logic and a cost-benefit analysis for agent lane-changing behavior;</li>
+                        <li>Project: Leveraged and extended <strong>LPSim</strong>, a high-performance, GPU-accelerated traffic simulation framework, to understand cooperation patterns between AV companies and road infrastructure companies.</li>
+                        <li>Designed and implemented an end-to-end bi-level optimization framework to find optimal tolling strategies by modeling the interaction between infrastructure operators and autonomous vehicle fleets.</li>
+                        <li>Developed the upper-level model in Python to create an automated loop that executes the <strong>LPSim</strong> C++/CUDA simulator and iteratively updates tolling policies.</li>
+                        <li>Re-engineered the simulator's core logic for toll-responsive, cost-benefit analysis in agent lane-changing behavior, differentiating between AVs and HVs.</li>
                         <li>Verified the framework's effectiveness while generating substantial revenue across various tested scenarios.</li>
                     </ul>
-		<div class="slideshow-container">
+                    <!-- 图片幻灯片部分 -->
+                    <div class="slideshow-container">
                         <div class="lpsim-slide">
                             <img src="LPSim_Framework_01.jpg" alt="LPSim Framework Diagram">
                         </div>
