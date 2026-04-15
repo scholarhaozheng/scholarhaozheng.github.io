@@ -4,304 +4,617 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hao Zheng - Homepage</title>
-    <!-- 浏览器标签页图标 (Favicon) -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
-    <!-- Font Awesome 图标库 (用于按钮图标) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* --- 页面整体风格 --- */
+        :root {
+            --bg: #f5f7fa;
+            --card: #ffffff;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --line: #d8e0e8;
+            --accent: #1f4e79;
+            --accent-soft: #eef4fa;
+            --shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
+
+            --badge-blue-bg: #eaf3ff;
+            --badge-blue-text: #204b76;
+            --badge-green-bg: #eaf7ee;
+            --badge-green-text: #24613a;
+            --badge-gold-bg: #fbf4df;
+            --badge-gold-text: #7a5a10;
+            --badge-gray-bg: #eef1f4;
+            --badge-gray-text: #4b5563;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Times New Roman', Georgia, serif;
-            line-height: 1.6;
             margin: 0;
-            padding: 60px 0 0 0; /* 为固定的导航栏留出空间 */
-            background-color: #f8f9fa;
-            color: #212529;
-            scroll-behavior: smooth; /* 平滑滚动 */
+            padding: 70px 0 0 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Times New Roman", Georgia, serif;
+            line-height: 1.65;
         }
-        .container {
-            max-width: 950px;
-            margin: 30px auto;
-            padding: 40px;
-            background-color: #ffffff;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
         }
-        
-        /* --- 导航栏 --- */
+
+        a:hover {
+            color: #123754;
+        }
+
         nav {
-            background: #fff;
-            border-bottom: 1px solid #ddd;
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            height: 60px;
+            height: 62px;
+            background: rgba(255,255,255,0.97);
+            border-bottom: 1px solid var(--line);
+            backdrop-filter: blur(6px);
             z-index: 1000;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
+
         nav .nav-container {
+            width: 100%;
+            max-width: 1080px;
+            padding: 0 18px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            width: 100%;
-            max-width: 950px;
-            padding: 0 20px;
-            overflow-x: auto; /* 在小屏幕上可以滚动 */
-        }
-        nav .nav-name {
-            font-size: 1.5em;
-            font-weight: bold;
-            white-space: nowrap;
-        }
-        nav .nav-links {
-            display: flex;
-        }
-        nav a {
-            color: #333;
-            text-decoration: none;
-            padding: 10px 12px;
-            font-size: 1em;
-            white-space: nowrap;
-        }
-        nav a:hover {
-            color: #0056b3;
+            overflow-x: auto;
         }
 
-        /* --- 个人信息头部 --- */
+        nav .nav-name {
+            font-size: 1.45em;
+            font-weight: 700;
+            color: var(--text);
+            white-space: nowrap;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 4px;
+        }
+
+        nav .nav-links a {
+            padding: 9px 12px;
+            border-radius: 7px;
+            color: #374151;
+            white-space: nowrap;
+            font-size: 0.98em;
+        }
+
+        nav .nav-links a:hover {
+            background: #f1f5f9;
+            color: var(--accent);
+        }
+
+        .container {
+            max-width: 1080px;
+            margin: 28px auto 40px auto;
+            background: var(--card);
+            box-shadow: var(--shadow);
+            padding: 44px;
+        }
+
+        section {
+            margin-top: 36px;
+        }
+
+        h2 {
+            font-size: 1.9em;
+            font-weight: 700;
+            color: #22303c;
+            border-bottom: 2px solid #22303c;
+            padding-bottom: 8px;
+            margin-bottom: 22px;
+            padding-top: 76px;
+            margin-top: -62px;
+        }
+
+        h3 {
+            font-size: 1.22em;
+            font-weight: 700;
+            color: #425466;
+            margin: 24px 0 16px 0;
+        }
+
+        .section-note {
+            margin: -6px 0 18px 0;
+            color: var(--muted);
+            font-size: 0.97em;
+        }
+
         .profile-section {
             display: flex;
             align-items: center;
-            margin-bottom: 30px;
-            padding-top: 20px; /* 为跳转留出空间 */
-        }
-        .profile-photo {
-            flex-shrink: 0;
-            margin-right: 40px;
-        }
-        .profile-photo img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%; /* 圆形头像 */
-            object-fit: cover;
-            border: 3px solid #eee;
-        }
-        .profile-info h1 {
-            margin: 0;
-            font-size: 2.8em;
-            font-weight: 600;
-        }
-        .profile-info p {
-            margin: 10px 0 0;
-            font-size: 1.1em;
-            color: #495057;
+            gap: 34px;
+            margin-bottom: 20px;
         }
 
-        /* --- 仿照 Kuan Fang 的按钮样式 --- */
+        .profile-photo {
+            flex-shrink: 0;
+        }
+
+        .profile-photo img {
+            width: 190px;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #f1f3f6;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        }
+
+        .profile-info h1 {
+            margin: 0 0 10px 0;
+            font-size: 3em;
+            color: #17212b;
+        }
+
+        .profile-role {
+            font-size: 1.14em;
+            color: #334155;
+            margin-bottom: 10px;
+        }
+
+        .profile-role strong {
+            color: var(--accent);
+        }
+
+        .profile-contact {
+            font-size: 1.05em;
+            color: #4b5563;
+        }
+
         .button-group {
-            margin-top: 15px;
+            margin-top: 16px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
+
         .button-icon {
-            background-color: transparent;
-            border: none;
-            color: #333;
-            padding: 5px;
-            margin-right: 5px;
-            font-size: 1em;
-            cursor: pointer;
-            text-decoration: none;
-            font-family: 'Times New Roman', Georgia, serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 8px 13px;
+            border: 1px solid var(--line);
+            background: #f8fafc;
+            color: #334155;
+            border-radius: 8px;
+            font-size: 0.97em;
+            transition: 0.2s ease;
         }
+
         .button-icon:hover {
-            color: #0056b3;
+            background: var(--accent-soft);
+            border-color: #c7d5e4;
+            color: var(--accent);
         }
-        .button-icon i {
-            margin-right: 5px; /* 图标和文字的间距 */
+
+        .intro-note {
+            margin-top: 14px;
+            padding: 15px 17px;
+            background: #f8fafc;
+            border-left: 4px solid #c8d8ea;
+            color: #46505c;
+            font-size: 0.98em;
         }
-        
-        /* --- 区块标题 --- */
-        h2 {
-            font-size: 1.8em;
-            font-weight: 600;
-            color: #343a40;
-            border-bottom: 2px solid #343a40;
-            padding-bottom: 8px;
-            margin-top: 40px;
-            margin-bottom: 25px;
-            padding-top: 70px; /* 为锚点跳转留出顶部空间 */
-            margin-top: -60px; /* 抵消padding-top的影响 */
+
+        .interest-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 14px;
         }
-        h3 {
-            font-size: 1.3em;
-            font-weight: bold;
-            color: #495057;
-            margin-top: 25px;
-            margin-bottom: 15px;
+
+        .interest-tag {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 999px;
+            background: #f3f6f9;
+            border: 1px solid #dde5ee;
+            font-size: 0.9em;
+            color: #415162;
         }
-        
-        /* --- 列表通用样式 --- */
-        ul {
+
+        /* News */
+        .news-shell {
+            border: 1px solid #dde5ee;
+            border-radius: 16px;
+            background: linear-gradient(to bottom, #fcfdff, #ffffff);
+            box-shadow: 0 3px 12px rgba(15, 23, 42, 0.04);
             padding: 0;
+        }
+
+        .news-header {
+            padding: 16px 20px 12px 20px;
+            border-bottom: 1px solid #edf2f7;
+            color: #556273;
+            font-size: 0.96em;
+        }
+
+        .news-scrollbox {
+            height: 360px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-gutter: stable;
+            padding: 18px 18px 18px 26px;
+        }
+
+        .news-scrollbox::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        .news-scrollbox::-webkit-scrollbar-track {
+            background: #edf2f7;
+            border-radius: 999px;
+        }
+
+        .news-scrollbox::-webkit-scrollbar-thumb {
+            background: #b8c4d2;
+            border-radius: 999px;
+            border: 2px solid #edf2f7;
+        }
+
+        .news-scrollbox::-webkit-scrollbar-thumb:hover {
+            background: #9fb0c2;
+        }
+
+        .news-list {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            padding-left: 16px;
+        }
+
+        .news-list::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 6px;
+            bottom: 6px;
+            width: 2px;
+            background: linear-gradient(to bottom, #dbe5ef, #c8d7e6);
+        }
+
+        .news-item {
+            position: relative;
+            padding-left: 22px;
+            padding-bottom: 2px;
+        }
+
+        .news-item::before {
+            content: "";
+            position: absolute;
+            left: -6px;
+            top: 9px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 4px #eef4fa;
+        }
+
+        .news-date {
+            display: inline-block;
+            margin-bottom: 6px;
+            padding: 3px 10px;
+            border-radius: 999px;
+            background: #eef4fa;
+            color: var(--accent);
+            font-size: 0.9em;
+            font-weight: 700;
+        }
+
+        .news-text {
+            font-size: 1em;
+            color: #2f3b47;
+            line-height: 1.75;
+        }
+
+        .simple-list {
             list-style: none;
+            padding: 0;
+            margin: 0;
         }
-        li {
-            margin-bottom: 15px;
+
+        .simple-list li {
+            margin-bottom: 14px;
         }
+
         .item-title {
-            font-weight: bold;
-            font-size: 1.1em;
+            font-weight: 700;
+            font-size: 1.08em;
+            color: #1f2937;
         }
-        .item-title a {
-            color: inherit;
-            text-decoration: none;
-        }
-        .item-title a:hover {
-            text-decoration: underline;
-        }
+
         .item-subtitle {
             font-style: italic;
-            color: #6c757d;
+            color: var(--muted);
+            margin-top: 4px;
         }
+
         .right-float {
             float: right;
+            color: var(--muted);
             font-style: normal;
-            color: #6c757d;
         }
+
+        /* Publications / Manuscripts */
+        .pub-list {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        .pub-card {
+            display: flex;
+            gap: 22px;
+            align-items: flex-start;
+            padding: 18px;
+            border: 1px solid #e5eaf0;
+            border-radius: 14px;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
+        }
+
+        .pub-card.featured {
+            border-color: #d7e2ee;
+            background: linear-gradient(to bottom, #fcfdff, #ffffff);
+        }
+
+        .pub-image {
+            width: 172px;
+            flex-shrink: 0;
+        }
+
+        .pub-image img {
+            width: 100%;
+            display: block;
+            border: 1px solid #d8dee6;
+            border-radius: 8px;
+        }
+
+        .pub-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .pub-topline {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 0.83em;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            border: 1px solid transparent;
+        }
+
+        .badge-blue {
+            background: var(--badge-blue-bg);
+            color: var(--badge-blue-text);
+            border-color: #d6e7fa;
+        }
+
+        .badge-green {
+            background: var(--badge-green-bg);
+            color: var(--badge-green-text);
+            border-color: #d9eddf;
+        }
+
+        .badge-gold {
+            background: var(--badge-gold-bg);
+            color: var(--badge-gold-text);
+            border-color: #f0e3b4;
+        }
+
+        .badge-gray {
+            background: var(--badge-gray-bg);
+            color: var(--badge-gray-text);
+            border-color: #dde3ea;
+        }
+
+        .pub-date {
+            color: var(--muted);
+            font-size: 0.93em;
+        }
+
+        .pub-title {
+            font-size: 1.24em;
+            font-weight: 700;
+            color: #16212b;
+            margin: 0 0 6px 0;
+        }
+
+        .pub-authors {
+            margin: 0 0 7px 0;
+            color: #374151;
+            font-size: 1em;
+        }
+
+        .pub-venue {
+            margin: 0 0 10px 0;
+            color: #5a6675;
+            font-style: italic;
+        }
+
+        .pub-links {
+            margin: 10px 0 6px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .pub-links a {
+            display: inline-block;
+            background-color: #f5f7fa;
+            border: 1px solid #d7dde5;
+            border-radius: 7px;
+            padding: 5px 10px;
+            font-size: 0.9em;
+            color: #334155;
+            text-decoration: none;
+        }
+
+        .pub-links a:hover {
+            background-color: #edf3f9;
+            color: var(--accent);
+        }
+
+        .contribution-box {
+            margin-top: 12px;
+            padding: 12px 14px;
+            background: #fafbfd;
+            border-left: 3px solid #d8e2ec;
+            border-radius: 6px;
+            font-size: 0.95em;
+        }
+
+        .contribution-box p {
+            margin: 5px 0;
+        }
+
         .description-list {
             list-style-type: disc;
-            padding-left: 25px;
+            padding-left: 24px;
             margin-top: 10px;
         }
+
         .description-list li {
             margin-bottom: 8px;
         }
 
-
-        /* --- 论文/项目列表 --- */
-        .publication-item {
-            display: flex;
-            margin-bottom: 30px;
-            align-items: flex-start;
-        }
-        .publication-image {
-            width: 160px;
-            margin-right: 25px;
-            flex-shrink: 0;
-        }
-        .publication-image img {
-            width: 100%;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        .publication-details {
-            flex-grow: 1;
-        }
-        .publication-title {
-            font-size: 1.2em;
-            font-weight: bold;
-            margin: 0 0 5px 0;
-        }
-        .publication-authors {
-            margin: 0 0 5px 0;
-            font-size: 1em;
-        }
-        .publication-meta {
-            margin: 0 0 10px 0;
-            color: #6c757d;
-            font-style: italic;
-        }
-        .publication-links a {
-            display: inline-block;
-            background-color: #f0f0f0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            padding: 4px 10px;
-            margin-right: 8px;
-            margin-top: 5px;
-            font-size: 0.9em;
-            color: #333;
-            text-decoration: none;
-        }
-        .publication-links a:hover {
-            background-color: #e0e0e0;
-            text-decoration: none;
-        }
-        .contribution {
-            font-size: 0.95em;
-            margin-top: 8px;
-            padding-left: 15px;
-            border-left: 2px solid #e9ecef;
-        }
-        .contribution p {
-            margin: 5px 0;
-        }
-	.project-images {
-            display: flex;
-            gap: 20px; /* 图片之间的间距 */
-            margin-top: 20px; /* 图片与上方文字的间距 */
-            justify-content: center;
-        }
-        .project-images img {
-            width: calc(50% - 10px); /* 让两张图平分宽度并留出间距 */
-            max-width: 100%;
-            height: auto;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+        .service-card,
+        .exp-card {
+            padding: 16px 18px;
+            border: 1px solid #e7ebf0;
+            border-radius: 12px;
+            background: #fff;
+            margin-bottom: 16px;
         }
 
-	.slideshow-container {
+        .slideshow-container {
             position: relative;
-            margin: 20px auto 0 auto;
-            max-width: 800px; /* 限制幻灯片最大宽度 */
+            margin: 18px auto 0 auto;
+            max-width: 820px;
         }
+
         .lpsim-slide {
-            display: none; /* 默认隐藏所有图片 */
+            display: none;
         }
+
         .lpsim-slide img {
             width: 100%;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            border: 1px solid #d8dee6;
+            border-radius: 8px;
         }
-        /* 上一张/下一张 按钮 */
+
         .prev, .next {
             cursor: pointer;
             position: absolute;
             top: 50%;
             width: auto;
-            padding: 16px;
-            margin-top: -22px;
+            padding: 14px;
+            margin-top: -24px;
             color: white;
             font-weight: bold;
             font-size: 20px;
-            transition: 0.6s ease;
-            border-radius: 0 3px 3px 0;
+            border-radius: 6px;
             user-select: none;
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(0,0,0,0.45);
+            transition: background 0.2s ease;
         }
-        /* “下一张”按钮的位置 */
+
         .next {
             right: 0;
-            border-radius: 3px 0 0 3px;
         }
-        /* 鼠标悬停时，按钮变暗 */
+
         .prev:hover, .next:hover {
-            background-color: rgba(0,0,0,0.8);
+            background-color: rgba(0,0,0,0.78);
         }
-        
+
+        @media (max-width: 900px) {
+            .container {
+                padding: 28px 22px 36px 22px;
+            }
+
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .button-group,
+            .interest-tags {
+                justify-content: center;
+            }
+
+            .pub-card {
+                flex-direction: column;
+            }
+
+            .pub-image {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .right-float {
+                float: none;
+                display: block;
+                margin-top: 4px;
+            }
+
+            .news-scrollbox {
+                height: 330px;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .news-scrollbox {
+                height: 300px;
+                padding: 16px 14px 16px 20px;
+            }
+
+            .news-list {
+                padding-left: 14px;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- 顶部导航栏 -->
     <nav>
         <div class="nav-container">
             <a href="#about" class="nav-name">Hao Zheng</a>
             <div class="nav-links">
+                <a href="#news">News</a>
                 <a href="#education">Education</a>
                 <a href="#manuscripts">Manuscripts</a>
                 <a href="#publications">Publications</a>
+                <a href="#service">Service</a>
                 <a href="#research-experience">Research</a>
                 <a href="#projects">Projects</a>
             </div>
@@ -309,28 +622,105 @@
     </nav>
 
     <div class="container">
-        <!-- 个人信息 -->
         <section id="about" class="profile-section">
             <div class="profile-photo">
                 <img src="Hao_Zheng_photo.jpg" alt="Hao Zheng's photo">
             </div>
             <div class="profile-info">
                 <h1>Hao Zheng</h1>
-                <p>
-                    Email: <a href="mailto:zhengh22@mails.tsinghua.edu.cn">zhengh22@mails.tsinghua.edu.cn</a> | <a href="mailto:scholarhaozheng@gmail.com">scholarhaozheng@gmail.com</a><br>
+                <div class="profile-role">
+                    <strong>Associate Member, PIARC Technical Committee 1.1 (World Road Association)</strong><br>
+                    Tsinghua University
+                </div>
+                <div class="profile-contact">
+                    Email: <a href="mailto:zhengh22@mails.tsinghua.edu.cn">zhengh22@mails.tsinghua.edu.cn</a> |
+                    <a href="mailto:scholarhaozheng@gmail.com">scholarhaozheng@gmail.com</a><br>
                     Phone: +86 157 1112 0980
-                </p>
+                </div>
                 <div class="button-group">
                     <a href="https://github.com/scholarhaozheng" class="button-icon" target="_blank"><i class="fa-brands fa-github"></i>GitHub</a>
-                    |
                     <a href="CV_of_Hao_Zheng.pdf" class="button-icon" target="_blank"><i class="fa-solid fa-file-pdf"></i>CV</a>
+                </div>
+                <div class="intro-note">
+                    I work on transportation systems, infrastructure management, optimization, and data-driven modeling, with recent research spanning pavement maintenance scheduling, metro OD and path flow forecasting, logistics routing, and autonomous mobility systems.
+                </div>
+                <div class="interest-tags">
+                    <span class="interest-tag">Transportation Systems</span>
+                    <span class="interest-tag">Infrastructure Management</span>
+                    <span class="interest-tag">Optimization</span>
+                    <span class="interest-tag">Vehicle Routing</span>
+                    <span class="interest-tag">Data-Driven Modeling</span>
+                    <span class="interest-tag">AI for Transportation</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="news">
+            <h2>News</h2>
+            <p class="section-note">Recent updates. This panel has its own vertical scrollbar.</p>
+
+            <div class="news-shell">
+                <div class="news-header">
+                    Scroll within this box to view additional updates.
+                </div>
+                <div class="news-scrollbox">
+                    <div class="news-list">
+                        <div class="news-item">
+                            <div class="news-date">Apr 2026</div>
+                            <div class="news-text">
+                                Appointed as <strong>Associate Member of PIARC Technical Committee 1.1</strong> from China.
+                            </div>
+                        </div>
+
+                        <div class="news-item">
+                            <div class="news-date">Apr 2026</div>
+                            <div class="news-text">
+                                Contributing to the <em>PIARC TC 1.1 Working Group 1 Survey Report</em> on <em>Envisioning the Transport Agency of the Future</em>, including survey analysis, evidence synthesis, and report drafting.
+                            </div>
+                        </div>
+
+                        <div class="news-item">
+                            <div class="news-date">Apr 2026</div>
+                            <div class="news-text">
+                                Submitted <em>An Operational Scheduling Framework for Pavement Maintenance Activities: From Rule-Based Task Generation to Branch-and-Price-Based Route Optimization</em> to <em>International Journal of Pavement Engineering</em>. Current system status: <strong>With Journal Administrator</strong>. Submission date: <strong>13 April 2026</strong>.
+                            </div>
+                        </div>
+
+                        <div class="news-item">
+                            <div class="news-date">Apr 2026</div>
+                            <div class="news-text">
+                                Submitted <em>STAGED TRANSFER LEARNING FOR LOCAL PAVEMENT CONDITION PREDICTION UNDER HETEROGENEOUS INDICATORS</em> to <em>IEEE Transactions on Intelligent Transportation Systems</em>.
+                            </div>
+                        </div>
+
+                        <div class="news-item">
+                            <div class="news-date">Apr 2026</div>
+                            <div class="news-text">
+                                R1 of <em>Integrated Routing of Trucks and Robots for Multi-Modal Urban Express Logistics</em> is currently <strong>under review</strong> at <em>Transportation Research Record</em>.
+                            </div>
+                        </div>
+
+                        <div class="news-item">
+                            <div class="news-date">Mar 2026</div>
+                            <div class="news-text">
+                                Submitted the <strong>round-2 major revision</strong> of <em>KNOWCAST: Domain-Knowledge-Integrated Deep Learning for Metro OD and Path Flow Joint Forecasting</em> to <em>Transportation Research Part C</em>.
+                            </div>
+                        </div>
+
+                        <div class="news-item">
+                            <div class="news-date">Jan 2026</div>
+                            <div class="news-text">
+                                Participated in the <strong>TRB 105th Annual Meeting</strong>.
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="education">
             <h2>Education</h2>
-            <ul>
+            <ul class="simple-list">
                 <li>
                     <p>
                         <span class="item-title">Tsinghua University</span>, School of Civil Engineering, Master of Science
@@ -346,205 +736,315 @@
             </ul>
         </section>
 
-
         <section id="manuscripts">
             <h2>Manuscripts in Progress</h2>
-            <h3>Accepted & Under Revision (1 Under Revision, 1 Submitted)</h3>
-            <ul class="publication-list">
-                <li class="publication-item">
-                    <div class="publication-image"><img src="KNOWCAST_Figure.png" alt="KNOWCAST thumbnail"></div>
-                    <div class="publication-details">
-                        <p class="publication-title">KNOWCAST: Domain-Knowledge-Integrated Deep Learning for Metro OD and Path Flow Joint Forecasting </p>
-                        <p class="publication-authors"><strong>Hao Zheng</strong>, Han Zheng*, George Giannopoulos.</p>
-                        <p class="publication-meta">Submitted to Transportation Research Part C <span class="right-float">Revision Received: 12/2025</span></p>
-                        <div class="publication-links"><a href="https://github.com/scholarhaozheng/KNOWCAST" target="_blank">[Code]</a></div>
-                        <div class="contribution">
-                            <p><strong>Paper's Contribution:</strong> Proposed a novel deep learning framework that embeds transportation models (trip generation, distribution, assignment) to jointly forecast metro OD and path flows, leveraging intermediate path-level features to ensure their mathematical consistency and improve accuracy.</p>
-                            <p><strong>My Contribution:</strong> Led model development, coding, experimental validation, and manuscript writing.</p>
-                        </div>
-                    </div>
-                </li>
+            <p class="section-note">Current manuscripts under review, under revision, or in active preparation.</p>
 
-		<li class="publication-item">
-                <div class="publication-image"><img src="Vehicle_Route_Planning_Figure.png" alt="VRP_RD thumbnail"></div>
-                    <div class="publication-details">
-                        <p class="publication-title"> An End-to-End Framework for Pavement Maintenance Scheduling: From Rule-Based Planning to Optimized Vehicle Routing</p>
-                        <p class="publication-authors"><strong>Hao Zheng</strong>, Yian Zhao, Jiantao Li, Xi Zhu, Runhua Guo*.</p>
-                        <p class="publication-meta">Submitted to International Journal Of Pavement Engineering <span class="right-float">Decision Pending, 12/2025</span></p>
-                        <div class="publication-links"><a href="https://github.com/scholarhaozheng/Decision_Making_for_Pavement_Maintenance_Strategies_and_a_VRP_model_for_Execution" target="_blank">[Code]</a></div>
-                         <div class="contribution">
-                            <p><strong>Paper's Contribution:</strong> Developed an integrated framework for maintenance-vehicle route planning that addresses the challenge of representing linear road segments within a node-based network graph. The method first introduces a novel topology reconstruction technique, using a three-node (entry, virtual, exit) structure to model maintenance tasks. It then formulates the scheduling challenge as a Vehicle Routing Problem with Time Windows (VRPTW) and solves it efficiently using a custom Branch-and-Price algorithm.</p>
+            <h3>Under Review / Under Revision</h3>
+            <div class="pub-list">
+                <div class="pub-card featured">
+                    <div class="pub-image">
+                        <img src="KNOWCAST_Figure.png" alt="KNOWCAST thumbnail">
+                    </div>
+                    <div class="pub-content">
+                        <div class="pub-topline">
+                            <span class="badge badge-gold">Round-2 Major Revision Submitted</span>
+                            <span class="pub-date">03/2026</span>
+                        </div>
+                        <p class="pub-title">KNOWCAST: Domain-Knowledge-Integrated Deep Learning for Metro OD and Path Flow Joint Forecasting</p>
+                        <p class="pub-authors"><strong>Hao Zheng</strong>, Han Zheng*, George Giannopoulos.</p>
+                        <p class="pub-venue">Under review at <em>Transportation Research Part C</em></p>
+                        <div class="pub-links">
+                            <a href="https://github.com/scholarhaozheng/KNOWCAST" target="_blank">[Code]</a>
+                        </div>
+                        <div class="contribution-box">
+                            <p><strong>Paper's Contribution:</strong> Proposed a domain-knowledge-integrated deep learning framework that embeds transportation models to jointly forecast metro OD and path flows while improving mathematical consistency and prediction accuracy.</p>
                             <p><strong>My Contribution:</strong> Led model development, coding, experimental validation, and manuscript writing.</p>
                         </div>
                     </div>
-                </li>
-            </ul>
-            
+                </div>
+
+                <div class="pub-card featured">
+                    <div class="pub-image">
+                        <img src="Vehicle_Route_Planning_Figure.png" alt="Pavement scheduling thumbnail">
+                    </div>
+                    <div class="pub-content">
+                        <div class="pub-topline">
+                            <span class="badge badge-blue">Submitted</span>
+                            <span class="badge badge-gray">With Journal Administrator</span>
+                            <span class="pub-date">04/2026</span>
+                        </div>
+                        <p class="pub-title">An Operational Scheduling Framework for Pavement Maintenance Activities: From Rule-Based Task Generation to Branch-and-Price-Based Route Optimization</p>
+                        <p class="pub-authors"><strong>Hao Zheng</strong>, Yian Zhao, Jiantao Li, Xi Zhu, Runhua Guo*.</p>
+                        <p class="pub-venue">Submitted to <em>International Journal of Pavement Engineering</em> | Submission date: 13 April 2026</p>
+                        <div class="pub-links">
+                            <a href="https://github.com/scholarhaozheng/Decision_Making_for_Pavement_Maintenance_Strategies_and_a_VRP_model_for_Execution" target="_blank">[Code]</a>
+                        </div>
+                        <div class="contribution-box">
+                            <p><strong>Paper's Contribution:</strong> Developed an integrated operational scheduling framework for pavement maintenance activities, linking rule-based task generation with branch-and-price-based route optimization. The method reconstructs maintenance tasks on road segments into an optimization-friendly topology and formulates the execution stage as a vehicle routing problem with time windows.</p>
+                            <p><strong>My Contribution:</strong> Led model development, coding, experimental validation, and manuscript writing.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pub-card featured">
+                    <div class="pub-image">
+                        <img src="Multi-Staged Multi-Task Learning for Reliable Pavement Time-Series Prediction with Data Supplementation_Plan.png" alt="STAGED TRANSFER LEARNING thumbnail">
+                    </div>
+                    <div class="pub-content">
+                        <div class="pub-topline">
+                            <span class="badge badge-blue">Submitted</span>
+                            <span class="pub-date">04/2026</span>
+                        </div>
+                        <p class="pub-title">STAGED TRANSFER LEARNING FOR LOCAL PAVEMENT CONDITION PREDICTION UNDER HETEROGENEOUS INDICATORS</p>
+                        <p class="pub-authors"><strong>Hao Zheng</strong>, Runhua Guo*.</p>
+                        <p class="pub-venue">Submitted to <em>IEEE Transactions on Intelligent Transportation Systems</em></p>
+                        <div class="pub-links">
+                            <a href="https://github.com/scholarhaozheng/Pave-ML-Multi-Task-Learning-for-Pavement-Performance-Indicators" target="_blank">[Code]</a>
+                        </div>
+                        <div class="contribution-box">
+                            <p><strong>Paper's Contribution:</strong> Proposed a staged transfer learning framework for local pavement condition prediction under heterogeneous indicators. The method leverages external-data pre-training and progressive adaptation to local data under data scarcity and indicator mismatch.</p>
+                            <p><strong>My Contribution:</strong> Led model development, coding, experimental validation, and manuscript writing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <h3>In Preparation</h3>
-            <ul class="publication-list">
-                 <li class="publication-item">
-                     <div class="publication-image"><img src="DISCERN_Figure.png" alt="DISCERN thumbnail"></div>
-                    <div class="publication-details">
-                        <p class="publication-title">DISCERN: Discrete Choice with Embedded Representation Networks.</p>
-                        <p class="publication-authors"><strong>Hao Zheng</strong>, Han Zheng*, George A. Giannopoulos.</p>
-                        <p class="publication-meta">To be submitted to Transportation Research Part C <span class="right-float">02/2026</span></p>
-                         <div class="contribution">
-                            <p><strong>Paper's Contribution:</strong> Proposed DISCERN, a novel framework that calibrates the behavioral parameters of traditional Discrete Choice Models (DCMs) using large-scale, macroscopic data. This is achieved by embedding a theory-driven DCM within a deep learning architecture, using backpropagation on a macro-level predictive task to infer latent micro-level parameters, thus bridging the gap between micro-behavioral theory and macro-empirical validity.</p>
+            <div class="pub-list">
+                <div class="pub-card">
+                    <div class="pub-image">
+                        <img src="DISCERN_Figure.png" alt="DISCERN thumbnail">
+                    </div>
+                    <div class="pub-content">
+                        <div class="pub-topline">
+                            <span class="badge badge-gray">In Preparation</span>
+                        </div>
+                        <p class="pub-title">DISCERN: Discrete Choice with Embedded Representation Networks.</p>
+                        <p class="pub-authors"><strong>Hao Zheng</strong>, Han Zheng*, George A. Giannopoulos.</p>
+                        <p class="pub-venue">Target journal: <em>Transportation Research Part C</em></p>
+                        <div class="contribution-box">
+                            <p><strong>Paper's Contribution:</strong> Proposed DISCERN, a framework that calibrates behavioral parameters of traditional discrete choice models using large-scale macroscopic data by embedding a theory-driven model within a deep learning architecture.</p>
                             <p><strong>My Contribution:</strong> Led model development, coding, experimental validation, and manuscript writing.</p>
                         </div>
                     </div>
-                </li>
-                <li class="publication-item">
-                     <div class="publication-image"><img src="Multi-Staged Multi-Task Learning for Reliable Pavement Time-Series Prediction with Data Supplementation_Plan.png" alt="Pave-ML thumbnail"></div>
-                    <div class="publication-details">
-                        <p class="publication-title">Multi-Staged Multi-Task Learning for Reliable Pavement Time-Series Prediction with Data Supplementation.</p>
-                        <p class="publication-authors"><strong>Hao Zheng</strong>, Runhua Guo*.</p>
-                        <p class="publication-meta">To be submitted to IEEE Transactions on Intelligent Transportation Systems <span class="right-float">01/2026</span></p>
-                        <div class="publication-links"><a href="https://github.com/scholarhaozheng/Pave-ML-Multi-Task-Learning-for-Pavement-Performance-Indicators" target="_blank">[Code]</a></div>
-                        <div class="contribution">
-                            <p><strong>Paper's Contribution:</strong> Proposed a multi-staged, multi-task learning framework to overcome data scarcity in pavement performance prediction. The approach involves pre-training a deep learning model on a large-scale public dataset (LTPP) and then progressively adapting it to a smaller, local dataset (Fuzhou) through a phased training strategy with parameter freezing, enabling reliable prediction of multiple performance indicators (IRI, RD, and PCI).</p>
-                            <p><strong>My Contribution:</strong> Led model development, coding, experimental validation, and manuscript writing.</p>
+                </div>
+
+                <div class="pub-card">
+                    <div class="pub-image">
+                        <img src="LPSim_Figure.png" alt="LPSim thumbnail">
+                    </div>
+                    <div class="pub-content">
+                        <div class="pub-topline">
+                            <span class="badge badge-gray">In Preparation</span>
+                        </div>
+                        <p class="pub-title">A Bilevel Optimization Framework for Collaborative Strategies between Infrastructure and Mobility Service Providers.</p>
+                        <p class="pub-authors"><strong>Hao Zheng</strong>, Yuhan Tang, Nina Cao, Yibo Zhao, Xuan Jiang*, Dingyi Zhuang, Shenhao Wang, Haris N. Koutsopoulos, and Jinhua Zhao.</p>
+                        <p class="pub-venue">Target journal: <em>Transportation Research Part C</em></p>
+                        <div class="pub-links">
+                            <a href="https://github.com/Xuan-1998/LPSim/pull/24" target="_blank">[Code Contribution]</a>
+                        </div>
+                        <div class="contribution-box">
+                            <p><strong>Paper's Contribution:</strong> Developed a bilevel optimization framework integrated with a GPU-based microscopic traffic simulator to model and solve strategic interactions between infrastructure providers and AV fleet operators.</p>
+                            <p><strong>My Contribution:</strong> Designed and implemented the end-to-end bilevel optimization framework; developed the Python upper-level loop and re-engineered the C++/CUDA lower-level simulator to integrate toll-responsive logic.</p>
                         </div>
                     </div>
-                </li>
-
-		<li class="publication-item">
-                     <div class="publication-image"><img src="LPSim_Figure.png" alt="LPSim thumbnail"></div>
-                    <div class="publication-details">
-                        <p class="publication-title">A Bilevel Optimization Framework for Collaborative Strategies between Infrastructure and Mobility Service Providers.</p>
-                        <p class="publication-authors"><strong>Hao Zheng</strong>, Yuhan Tang, Nina Cao, Yibo Zhao, Xuan Jiang*, Dingyi Zhuang, Shenhao Wang, Haris N. Koutsopoulos, and Jinhua Zhao.</p>
-                        <p class="publication-meta">To be submitted to Transportation Research Part C <span class="right-float">02/2026</span></p>
-                        <div class="publication-links"><a href="https://github.com/Xuan-1998/LPSim/pull/24" target="_blank">[Code Contribution]</a></div>
-                        <div class="contribution">
-                            <p><strong>Paper's Contribution:</strong> Developed a bi-level optimization framework, integrated with a high-performance, GPU-based microscopic traffic simulator (LPSim), to model and solve the strategic interactions (e.g., tolling, routing) between infrastructure providers and AV fleet operators. Analyzed various collaboration scenarios to quantify the trade-offs between operator revenue and system-wide efficiency.</p>
-                            <p><strong>My Contribution:</strong> Designed and implemented the end-to-end bi-level optimization framework; developed the Python-based upper-level optimization loop and re-engineered the C++/CUDA-based lower-level simulator to integrate toll-responsive agent logic.</p>
-                        </div>
-                    </div>
-                </li>
-
-            </ul>
+                </div>
+            </div>
         </section>
 
         <section id="publications">
             <h2>Publications</h2>
-            <h3>Book</h3>
-            <ul class="publication-list">
-                <li class="publication-item">
-                    <div class="publication-image"><img src="NingXia.png" alt="Ningxia Book Cover"></div>
-                    <div class="publication-details">
-                        <p class="publication-title">Green Development Paths and Strategies for Comprehensive Transportation in Ningxia</p>
-                        <p class="publication-authors">Huapu Lu, Fang Wang, Runhua Guo, Sa Xu, et al., and <strong>Hao Zheng</strong>.</p>
-                        <p class="publication-meta">Published: 2024 | ISBN: 9787114195624</p>
-                        <!-- 您可以在下面的 href="#" 中添加书籍的购买或出版社链接 -->
-                    </div>
-                </li>
-            </ul>
+            <p class="section-note">Published journal papers, conference papers, and book contributions.</p>
 
+            <h3>Book</h3>
+            <div class="pub-list">
+                <div class="pub-card">
+                    <div class="pub-image">
+                        <img src="NingXia.png" alt="Ningxia Book Cover">
+                    </div>
+                    <div class="pub-content">
+                        <div class="pub-topline">
+                            <span class="badge badge-green">Published</span>
+                            <span class="pub-date">2024</span>
+                        </div>
+                        <p class="pub-title">Green Development Paths and Strategies for Comprehensive Transportation in Ningxia</p>
+                        <p class="pub-authors">Huapu Lu, Fang Wang, Runhua Guo, Sa Xu, et al., and <strong>Hao Zheng</strong>.</p>
+                        <p class="pub-venue">Book | ISBN: 9787114195624</p>
+                    </div>
+                </div>
+            </div>
 
             <h3>Published Journal & Conference Papers</h3>
-            <ul class="publication-list">
-
-                <li class="publication-item">
-                     <div class="publication-image"><img src="Logit_Figure.png" alt="Logistics thumbnail"></div>
-                    <div class="publication-details">
-                        <p class="publication-title">Integrated Routing of Trucks and Robots for Multi-Modal Urban Express Logistics.</p>
-                        <p class="publication-authors"><strong>Hao Zheng</strong>, Han Zheng*, George Giannopoulos.</p>
-                        <p class="publication-meta">Accepted for presentation at the TRB 105th Annual Meeting, 2026; Under review for publication in Transportation Research Record <span class="right-float">Accepted: 09/2025</span></p>
-                        <div class="publication-links"><a href="https://github.com/scholarhaozheng/Software-Package-for-Hybrid-Route-Planning-of-Same-Day-and-Regular-Deliveries-in-Space-Time-Networks" target="_blank">[Code]</a></div>
-                         <div class="contribution">
-                            <p><strong>Paper's Contribution:</strong> Proposed LT-ADR, a novel logistic system for multi-modal urban delivery that jointly optimizes truck and robot routes for both regular and instant express services. The system is modeled on a multilayer space-time network and solved by a bespoke column-generation algorithm, demonstrating significant improvements in efficiency and computational speed over commercial solvers.</p>
+            <div class="pub-list">
+                <div class="pub-card">
+                    <div class="pub-image">
+                        <img src="Logit_Figure.png" alt="Logistics thumbnail">
+                    </div>
+                    <div class="pub-content">
+                        <div class="pub-topline">
+                            <span class="badge badge-blue">R1 Under Review</span>
+                            <span class="pub-date">04/2026</span>
+                        </div>
+                        <p class="pub-title">Integrated Routing of Trucks and Robots for Multi-Modal Urban Express Logistics.</p>
+                        <p class="pub-authors"><strong>Hao Zheng</strong>, Han Zheng*, George Giannopoulos.</p>
+                        <p class="pub-venue">Presented at the <em>TRB 105th Annual Meeting</em>, 2026; revision under review for publication in <em>Transportation Research Record</em></p>
+                        <div class="pub-links">
+                            <a href="https://github.com/scholarhaozheng/Software-Package-for-Hybrid-Route-Planning-of-Same-Day-and-Regular-Deliveries-in-Space-Time-Networks" target="_blank">[Code]</a>
+                        </div>
+                        <div class="contribution-box">
+                            <p><strong>Paper's Contribution:</strong> Proposed LT-ADR, a multi-modal urban logistics system that jointly optimizes truck and robot routes for regular and instant express services.</p>
                             <p><strong>My Contribution:</strong> Led model development, coding, experimental validation, and manuscript writing.</p>
                         </div>
                     </div>
-                </li>
+                </div>
 
-	    <li class="publication-item">
-                    <div class="publication-image"><img src="Vehicle_Vibration.png" alt="Vibration thumbnail"></div>
-                    <div class="publication-details">
-                        <p class="publication-title">Vehicle Vibration Modeling via Road profile Reconstruction and Simulation: Coupled Analysis of IRI, Speed, and Ride Comfort for Driving Assistance</p>
-                        <p class="publication-authors">Jiantao Li, Yian Zhao, <strong>Hao Zheng</strong>, Runhua Guo.</p>
-                        <p class="publication-meta">Road Materials and Pavement Design, 2025 </p>
-                        <div class="publication-links">
+                <div class="pub-card">
+                    <div class="pub-image">
+                        <img src="Vehicle_Vibration.png" alt="Vibration thumbnail">
+                    </div>
+                    <div class="pub-content">
+                        <div class="pub-topline">
+                            <span class="badge badge-green">Published</span>
+                            <span class="pub-date">2025</span>
+                        </div>
+                        <p class="pub-title">Vehicle Vibration Modeling via Road Profile Reconstruction and Simulation: Coupled Analysis of IRI, Speed, and Ride Comfort for Driving Assistance</p>
+                        <p class="pub-authors">Jiantao Li, Yian Zhao, <strong>Hao Zheng</strong>, Runhua Guo.</p>
+                        <p class="pub-venue"><em>Road Materials and Pavement Design</em>, 2025</p>
+                        <div class="pub-links">
                             <a href="https://doi.org/10.1080/14680629.2025.2574300" target="_blank">[Paper Link]</a>
                         </div>
                     </div>
-                </li>
+                </div>
 
-                <li class="publication-item">
-                    <div class="publication-image"><img src="Improving Synchronization in High Speed Railway and Air Intermodality.png" alt="IEEE T-ITS thumbnail"></div>
-                    <div class="publication-details">
-                        <p class="publication-title">Improving Synchronization in High-Speed Railway and Air Intermodality: Integrated Train Timetable Rescheduling and Passenger Flow Forecasting.</p>
-                        <p class="publication-authors">Yuyan Tan, Yibo Li, et al., and <strong>Hao Zheng</strong>.</p>
-                        <p class="publication-meta">IEEE Transactions on Intelligent Transportation Systems, 2022</p>
-                        <div class="publication-links"><a href="https://doi.org/10.1109/TITS.2021.3137410" target="_blank">[Paper Link]</a></div>
+                <div class="pub-card">
+                    <div class="pub-image">
+                        <img src="Improving Synchronization in High Speed Railway and Air Intermodality.png" alt="IEEE T-ITS thumbnail">
                     </div>
-                </li>
-                <li class="publication-item">
-                    <div class="publication-image"><img src="Study on Customized Shuttle Transit Mode Responding to Spatiotemporal Inhomogeneous Demand in Super-Peak_Figure.png" alt="Customized Bus thumbnail"></div>
-                    <div class="publication-details">
-                        <p class="publication-title">Study on Customized Shuttle Transit Mode Responding to Spatiotemporal Inhomogeneous Demand in Super-Peak.</p>
-                        <p class="publication-authors"><strong>Hao Zheng</strong>, Xingchen Zhang, Junhua Chen.</p>
-                        <p class="publication-meta">Inf. 2021, 12:429</p>
-                        <div class="publication-links">
+                    <div class="pub-content">
+                        <div class="pub-topline">
+                            <span class="badge badge-green">Published</span>
+                            <span class="pub-date">2022</span>
+                        </div>
+                        <p class="pub-title">Improving Synchronization in High-Speed Railway and Air Intermodality: Integrated Train Timetable Rescheduling and Passenger Flow Forecasting.</p>
+                        <p class="pub-authors">Yuyan Tan, Yibo Li, et al., and <strong>Hao Zheng</strong>.</p>
+                        <p class="pub-venue"><em>IEEE Transactions on Intelligent Transportation Systems</em>, 2022</p>
+                        <div class="pub-links">
+                            <a href="https://doi.org/10.1109/TITS.2021.3137410" target="_blank">[Paper Link]</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pub-card">
+                    <div class="pub-image">
+                        <img src="Study on Customized Shuttle Transit Mode Responding to Spatiotemporal Inhomogeneous Demand in Super-Peak_Figure.png" alt="Customized Bus thumbnail">
+                    </div>
+                    <div class="pub-content">
+                        <div class="pub-topline">
+                            <span class="badge badge-green">Published</span>
+                            <span class="pub-date">2021</span>
+                        </div>
+                        <p class="pub-title">Study on Customized Shuttle Transit Mode Responding to Spatiotemporal Inhomogeneous Demand in Super-Peak.</p>
+                        <p class="pub-authors"><strong>Hao Zheng</strong>, Xingchen Zhang, Junhua Chen.</p>
+                        <p class="pub-venue"><em>Information</em>, 2021, 12:429</p>
+                        <div class="pub-links">
                             <a href="https://doi.org/10.3390/info12100429" target="_blank">[Paper Link]</a>
                             <a href="https://github.com/scholarhaozheng/A-Multi-Type-Customized-Shuttle-Bus-Route-Planning-Software" target="_blank">[Code]</a>
                         </div>
-                         <div class="contribution">
-                            <p><strong>Paper's Contribution:</strong> Proposed a customized shuttle bus transportation model to address instantaneous mega-traffic flows with uneven demand. The problem is formulated as a Pickup and Delivery Problem with Time Windows and Transfers (PDPTWT) and solved by a novel heuristic algorithm combining Tabu Search and ALNS. The method demonstrated significant computational speedup over commercial solvers and achieved substantial reductions in fleet cost, vehicle waiting time, and passenger waiting time in reality-based case studies.</p>
+                        <div class="contribution-box">
+                            <p><strong>Paper's Contribution:</strong> Proposed a customized shuttle bus model to address super-peak travel demand, formulated as a PDPTWT and solved by a hybrid Tabu Search and ALNS algorithm.</p>
                             <p><strong>My Contribution:</strong> Led model development, coding, experimental validation, and manuscript writing.</p>
                         </div>
                     </div>
-                </li>
+                </div>
 
-                <li class="publication-item">
-                     <div class="publication-image"><img src="WTC.png" alt="WTC thumbnail"></div>
-                    <div class="publication-details">
-                        <p class="publication-title">Dynamic Planning Model and Solution Algorithm for the Demand-responsive Customized Bus Route.</p>
-                        <p class="publication-authors"><strong>Hao Zheng</strong>, Yun Wang*, Xuedong Yan, Yunwei Li.</p>
-                        <p class="publication-meta">World Transport Convention (WTC) Proceedings, 2021</p>
-			<div class="publication-links">
+                <div class="pub-card">
+                    <div class="pub-image">
+                        <img src="WTC.png" alt="WTC thumbnail">
+                    </div>
+                    <div class="pub-content">
+                        <div class="pub-topline">
+                            <span class="badge badge-green">Published</span>
+                            <span class="pub-date">2021</span>
+                        </div>
+                        <p class="pub-title">Dynamic Planning Model and Solution Algorithm for the Demand-responsive Customized Bus Route.</p>
+                        <p class="pub-authors"><strong>Hao Zheng</strong>, Yun Wang*, Xuedong Yan, Yunwei Li.</p>
+                        <p class="pub-venue"><em>World Transport Convention (WTC) Proceedings</em>, 2021</p>
+                        <div class="pub-links">
                             <a href="https://github.com/scholarhaozheng/Dynamic-Planning-Model-and-Solution-Algorithm-for-the-Demand-responsive-Customized-Bus-Route" target="_blank">[Code]</a>
                         </div>
-                        <div class="contribution">
-                            <p><strong>Paper's Contribution:</strong> Developed a two-stage planning model and solution algorithm for customized bus services, enabling dynamic route adjustments to accommodate real-time passenger demands on top of existing static reservations.</p>
-                            <p><strong>My Contribution:</strong> Modified the core algorithm, implemented the solution in code, conducted computational case studies for validation, and was the primary author of the manuscript.</p>
+                        <div class="contribution-box">
+                            <p><strong>Paper's Contribution:</strong> Developed a two-stage planning model and solution algorithm for demand-responsive customized bus services.</p>
+                            <p><strong>My Contribution:</strong> Modified the core algorithm, implemented the solution in code, conducted case studies, and was the primary author of the manuscript.</p>
                         </div>
                     </div>
-                </li>
-            </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="service">
+            <h2>Professional Service</h2>
+
+            <div class="service-card">
+                <p>
+                    <span class="item-title">Associate Member, PIARC Technical Committee 1.1</span>
+                    <span class="right-float">04/2026 -- Present</span>
+                </p>
+                <p class="item-subtitle">World Road Association (PIARC)</p>
+                <ul class="description-list">
+                    <li>Appointed as a new Associate Member of PIARC TC 1.1 from China in April 2026.</li>
+                    <li>Participate in international committee activities on transport planning, administration, and the future development of transport agencies.</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <p>
+                    <span class="item-title">Contributor, PIARC TC 1.1 Working Group 1 Survey Report</span>
+                    <span class="right-float">04/2026 -- Present</span>
+                </p>
+                <p class="item-subtitle">Working Group 1: Envisioning the Transport Agency of the Future</p>
+                <ul class="description-list">
+                    <li>Contribute to survey analysis, evidence synthesis, and report drafting for the WG1 international survey report.</li>
+                    <li>Participate in discussions on response patterns across agencies and countries, including LMIC-related perspectives.</li>
+                </ul>
+            </div>
         </section>
 
         <section id="theses">
             <h2>Theses</h2>
-            <ul>
-                <li><p><span class="item-title">Master Thesis:</span> A Comprehensive Full-Process Planning Model for Pavement Performance Forecasting and Maintenance Strategy Implementation under Missing Data Conditions. <span class="right-float">06/2025</span></p></li>
-                <li><p><span class="item-title">Undergraduate Thesis:</span> Customized Bus Planning Method Responding to Spatiotemporal Concentrated Demand in Super-peak. <span class="right-float">06/2022</span></p></li>
+            <ul class="simple-list">
+                <li>
+                    <p><span class="item-title">Master Thesis:</span> A Comprehensive Full-Process Planning Model for Pavement Performance Forecasting and Maintenance Strategy Implementation under Missing Data Conditions. <span class="right-float">06/2025</span></p>
+                </li>
+                <li>
+                    <p><span class="item-title">Undergraduate Thesis:</span> Customized Bus Planning Method Responding to Spatiotemporal Concentrated Demand in Super-peak. <span class="right-float">06/2022</span></p>
+                </li>
             </ul>
         </section>
 
         <section id="projects">
             <h2>Open Source Projects</h2>
-            <p>Projects continually updated on <a href="https://github.com/scholarhaozheng" target="_blank">github.com/scholarhaozheng</a></p>
-            <ul>
+            <p class="section-note">Projects continually updated on <a href="https://github.com/scholarhaozheng" target="_blank">github.com/scholarhaozheng</a>.</p>
+            <ul class="simple-list">
                 <li>
                     <p>
                         <span class="item-title"><a href="https://github.com/scholarhaozheng/Pave-ML-Multi-Task-Learning-for-Pavement-Performance-Indicators" target="_blank">Pave-ML-Multi-Task Learning for Pavement Performance Indicators</a></span> (Python)
                         <span class="right-float">Initial release: 2025</span>
                     </p>
                 </li>
-                 <li>
+                <li>
                     <p>
                         <span class="item-title"><a href="https://github.com/scholarhaozheng/Decision_Making_for_Pavement_Maintenance_Strategies_and_a_VRP_Model_for_Execution" target="_blank">Pavement Maintenance Decision-Making and a VRP Model for Execution</a></span> (Python)
                         <span class="right-float">Initial release: 2025</span>
                     </p>
                 </li>
-                 <li>
+                <li>
                     <p>
                         <span class="item-title"><a href="https://github.com/scholarhaozheng/Dynamic_Short-Term_Prediction_of_Urban_Rail_Origin-Destination_Flow" target="_blank">Dynamic Short-Term Prediction of Urban Rail Origin-Destination Flow</a></span> (Python)
                         <span class="right-float">Initial release: 2024</span>
                     </p>
                 </li>
-                 <li>
+                <li>
                     <p>
                         <span class="item-title"><a href="https://github.com/scholarhaozheng/Software-Package-for-Hybrid-Route-Planning-of-Same-Day-and-Regular-Deliveries-in-Space-Time-Networks" target="_blank">Hybrid Route Planning of Same-Day and Regular Deliveries in Space-Time Networks</a></span> (C#)
                         <span class="right-float">Initial release: 2023</span>
@@ -561,77 +1061,77 @@
 
         <section id="research-experience">
             <h2>Research Experience</h2>
-            <ul>
-                <li>
-                    <p><span class="item-title">Developing LPSim: A Bilevel Optimization Framework for Tolling Strategy in Autonomous Networks</span> <span class="right-float">06/2025 -- 10/2025</span></p>
-                    <p class="item-subtitle">MIT-UF-NEU Summer Research Camp | Supervisor: Prof. Jinhua Zhao, Dr. Xuan Jiang</p>
-                    <div class="publication-links">
+
+            <div class="exp-card">
+                <p><span class="item-title">Developing LPSim: A Bilevel Optimization Framework for Tolling Strategy in Autonomous Networks</span> <span class="right-float">06/2025 -- 10/2025</span></p>
+                <p class="item-subtitle">MIT-UF-NEU Summer Research Camp | Supervisor: Prof. Jinhua Zhao, Dr. Xuan Jiang</p>
+                <div class="pub-links">
                     <a href="https://github.com/Xuan-1998/LPSim/pull/24" target="_blank">[Code Contribution]</a>
                 </div>
-                    <ul class="description-list">
-                        <li>Project: Leveraged and extended <strong>LPSim</strong>, a high-performance, GPU-accelerated traffic simulation framework, to understand cooperation patterns between AV companies and road infrastructure companies.</li>
-                        <li>Designed and implemented an end-to-end bi-level optimization framework to find optimal tolling strategies by modeling the interaction between infrastructure operators and autonomous vehicle fleets.</li>
-                        <li>Developed the upper-level model in Python to create an automated loop that executes the <strong>LPSim</strong> C++/CUDA simulator and iteratively updates tolling policies.</li>
-                        <li>Re-engineered the simulator's core logic for toll-responsive, cost-benefit analysis in agent lane-changing behavior, differentiating between AVs and HVs.</li>
-                        <li>Verified the framework's effectiveness while generating substantial revenue across various tested scenarios.</li>
-                    </ul>
-                    <!-- 图片幻灯片部分 -->
-                    <div class="slideshow-container">
-                        <div class="lpsim-slide">
-                            <img src="LPSim_Framework_01.jpg" alt="LPSim Framework Diagram">
-                        </div>
-                        <div class="lpsim-slide">
-                            <img src="The Elevator Pitch Slide_01.jpg" alt="LPSim Project Summary">
-                        </div>
-                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                <ul class="description-list">
+                    <li>Project: Leveraged and extended <strong>LPSim</strong>, a high-performance, GPU-accelerated traffic simulation framework, to understand cooperation patterns between AV companies and road infrastructure companies.</li>
+                    <li>Designed and implemented an end-to-end bi-level optimization framework to find optimal tolling strategies by modeling the interaction between infrastructure operators and autonomous vehicle fleets.</li>
+                    <li>Developed the upper-level model in Python to create an automated loop that executes the <strong>LPSim</strong> C++/CUDA simulator and iteratively updates tolling policies.</li>
+                    <li>Re-engineered the simulator's core logic for toll-responsive, cost-benefit analysis in agent lane-changing behavior, differentiating between AVs and HVs.</li>
+                    <li>Verified the framework's effectiveness while generating substantial revenue across various tested scenarios.</li>
+                </ul>
+                <div class="slideshow-container">
+                    <div class="lpsim-slide">
+                        <img src="LPSim_Framework_01.jpg" alt="LPSim Framework Diagram">
                     </div>
-                </li>
-                 <li>
-                    <p><span class="item-title">Digital Platform for Intelligent Road Asset Management (Code Writing: Prediction & Decision Models)</span> <span class="right-float">2023--2025</span></p>
-                    <p class="item-subtitle">Project: Research on Integration and Application of Intelligent Air-Ground Equipment in Digital Transportation Management</p>
-                     <ul class="description-list">
-                        <li>Developed the core algorithms for a comprehensive digital road asset management platform, built on a SpringBoot + VUE framework.</li>
-                        <li>Designed and implemented the road performance prediction module, creating a deep learning model using GRU and Attention mechanisms that incorporates climate, traffic, and material data. Trained the model on the LTPP dataset.</li>
-                        <li>Built the maintenance optimization module, which uses a mathematical model under dual budget and performance constraints to generate optimal, fine-grained maintenance strategies.</li>
-                    </ul>
-                </li>
-                 <li>
-                    <p><span class="item-title">Strategic Framework for Green Transportation & Infrastructure Management (Researcher & Contributing Author)</span> <span class="right-float">2022--2024</span></p>
-                     <p class="item-subtitle">Project: Coordinating Ecological Protection with Carbon Peaking and Neutrality Goals in the Yellow River Basin | Supervisor: Prof. Runhua Guo</p>
-                     <ul class="description-list">
-                        <li>Researched and formulated technical roadmaps for the resource utilization of solid waste in highway construction, focusing on recycled asphalt and industrial by-products;</li>
-                        <li>Analyzed infrastructure lifecycle management strategies, including intelligent inspection methods, pavement performance prediction, and maintenance decision-making models;</li>
-                        <li>Under the primary guidance of Prof. Guo, authored two key chapters (Chapter 3: Green Construction; Chapter 4: Green Operations & Maintenance) of the project's resulting book, published by the China Communications Press.</li>
-                    </ul>
-                </li>
-                <li>
-                    <p><span class="item-title">Comparative Analysis of Road Design Standards for Belt and Road Projects (Research Analyst)</span> <span class="right-float">2023</span></p>
-                     <p class="item-subtitle">Project: Differentiated Research on Engineering Projects along the Belt and Road: Sri Lanka | Supervisor: Prof. Runhua Guo</p>
-                     <ul class="description-list">
-                        <li>Conducted a comparative analysis of highway design standards between China and key Belt and Road countries (e.g., Sri Lanka, Pakistan) to provide technical guidance for international projects;</li>
-                        <li>Conducted a comparative analysis of the standards for highway construction and acceptance between China and Sri Lanka, with a focus on asphalt pavement design philosophies, to formulate conversion methods and investigate universal acceptance criteria;</li>
-                        <li>Authored a technical report identifying critical differences in design parameters (e.g., standard axle loads, material specifications, reliability levels) to facilitate the adaptation of Chinese engineering practices abroad.</li>
-                    </ul>
-                </li>
-                <li>
-                    <p><span class="item-title">Optimizing Air-Rail Intermodal Transport: A Case Study of Daxing Airport (Project Leader)</span> <span class="right-float">2020 -- 2022</span></p>
-                     <p class="item-subtitle">National University Student Innovation & Entrepreneurship Development Program | Supervisor: Prof. Yuyan Tan</p>
-                     <ul class="description-list">
-                        <li>Led a student team to design a two-stage optimization framework aimed at improving the end-to-end efficiency of air-rail passenger transfers.</li>
-                        <li>Formulated a multi-objective optimization model to adjust high-speed rail timetables, maximizing flight connection opportunities while minimizing schedule disruptions.</li>
-                        <li>Designed a Customized Bus routing solution for the airport-station connection, modeling it as a VRPTWTS and developing a hybrid Adaptive Large Neighborhood Search and Tabu Search (ALNS-TS) algorithm to solve it.</li>
-                        <li>Implemented the solution as the Multi-Type Customized Shuttle Bus Route Planning Software, for which I was granted a national software copyright as the sole holder (Reg. No. 2021SR1289113).</li>
-                        <li>The project received a national-level award upon completion, and the research was accepted for publication in the World Transport Convention (WTC) proceedings.</li>
-                    </ul>
-                </li>
-            </ul>
-        </section>
-        
+                    <div class="lpsim-slide">
+                        <img src="The Elevator Pitch Slide_01.jpg" alt="LPSim Project Summary">
+                    </div>
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+            </div>
 
+            <div class="exp-card">
+                <p><span class="item-title">Digital Platform for Intelligent Road Asset Management (Code Writing: Prediction & Decision Models)</span> <span class="right-float">2023 -- 2025</span></p>
+                <p class="item-subtitle">Project: Research on Integration and Application of Intelligent Air-Ground Equipment in Digital Transportation Management</p>
+                <ul class="description-list">
+                    <li>Developed the core algorithms for a comprehensive digital road asset management platform, built on a SpringBoot + VUE framework.</li>
+                    <li>Designed and implemented the road performance prediction module, creating a deep learning model using GRU and Attention mechanisms that incorporates climate, traffic, and material data. Trained the model on the LTPP dataset.</li>
+                    <li>Built the maintenance optimization module, which uses a mathematical model under dual budget and performance constraints to generate optimal, fine-grained maintenance strategies.</li>
+                </ul>
+            </div>
+
+            <div class="exp-card">
+                <p><span class="item-title">Strategic Framework for Green Transportation & Infrastructure Management (Researcher & Contributing Author)</span> <span class="right-float">2022 -- 2024</span></p>
+                <p class="item-subtitle">Project: Coordinating Ecological Protection with Carbon Peaking and Neutrality Goals in the Yellow River Basin | Supervisor: Prof. Runhua Guo</p>
+                <ul class="description-list">
+                    <li>Researched and formulated technical roadmaps for the resource utilization of solid waste in highway construction, focusing on recycled asphalt and industrial by-products.</li>
+                    <li>Analyzed infrastructure lifecycle management strategies, including intelligent inspection methods, pavement performance prediction, and maintenance decision-making models.</li>
+                    <li>Under the primary guidance of Prof. Guo, authored two key chapters (Chapter 3: Green Construction; Chapter 4: Green Operations & Maintenance) of the project's resulting book, published by the China Communications Press.</li>
+                </ul>
+            </div>
+
+            <div class="exp-card">
+                <p><span class="item-title">Comparative Analysis of Road Design Standards for Belt and Road Projects (Research Analyst)</span> <span class="right-float">2023</span></p>
+                <p class="item-subtitle">Project: Differentiated Research on Engineering Projects along the Belt and Road: Sri Lanka | Supervisor: Prof. Runhua Guo</p>
+                <ul class="description-list">
+                    <li>Conducted a comparative analysis of highway design standards between China and key Belt and Road countries (e.g., Sri Lanka, Pakistan) to provide technical guidance for international projects.</li>
+                    <li>Conducted a comparative analysis of the standards for highway construction and acceptance between China and Sri Lanka, with a focus on asphalt pavement design philosophies, to formulate conversion methods and investigate universal acceptance criteria.</li>
+                    <li>Authored a technical report identifying critical differences in design parameters (e.g., standard axle loads, material specifications, reliability levels) to facilitate the adaptation of Chinese engineering practices abroad.</li>
+                </ul>
+            </div>
+
+            <div class="exp-card">
+                <p><span class="item-title">Optimizing Air-Rail Intermodal Transport: A Case Study of Daxing Airport (Project Leader)</span> <span class="right-float">2020 -- 2022</span></p>
+                <p class="item-subtitle">National University Student Innovation & Entrepreneurship Development Program | Supervisor: Prof. Yuyan Tan</p>
+                <ul class="description-list">
+                    <li>Led a student team to design a two-stage optimization framework aimed at improving the end-to-end efficiency of air-rail passenger transfers.</li>
+                    <li>Formulated a multi-objective optimization model to adjust high-speed rail timetables, maximizing flight connection opportunities while minimizing schedule disruptions.</li>
+                    <li>Designed a Customized Bus routing solution for the airport-station connection, modeling it as a VRPTWTS and developing a hybrid Adaptive Large Neighborhood Search and Tabu Search (ALNS-TS) algorithm to solve it.</li>
+                    <li>Implemented the solution as the Multi-Type Customized Shuttle Bus Route Planning Software, for which I was granted a national software copyright as the sole holder (Reg. No. 2021SR1289113).</li>
+                    <li>The project received a national-level award upon completion, and the research was accepted for publication in the World Transport Convention (WTC) proceedings.</li>
+                </ul>
+            </div>
+        </section>
     </div>
 
-<script>
+    <script>
         let slideIndex = 1;
         showSlides(slideIndex);
 
@@ -642,14 +1142,14 @@
         function showSlides(n) {
             let i;
             let slides = document.getElementsByClassName("lpsim-slide");
-            if (n > slides.length) {slideIndex = 1}    
-            if (n < 1) {slideIndex = slides.length}
+            if (slides.length === 0) return;
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
             for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";  
+                slides[i].style.display = "none";
             }
-            slides[slideIndex-1].style.display = "block";  
+            slides[slideIndex - 1].style.display = "block";
         }
     </script>
 </body>
 </html>
-
