@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hao Zheng | Transportation Systems, Optimization &amp; Machine Learning</title>
+<meta content="Academic homepage of Hao Zheng, researcher in transportation systems, optimization, machine learning, urban rail operations, multi-modal logistics, and pavement management." name="description"/>
+<meta content="Hao Zheng" name="author"/>
+<link href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;🎓&lt;/text&gt;&lt;/svg&gt;" rel="icon"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<style>
+        :root {
+            --bg: #f5f7fa;
+            --card: #ffffff;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --line: #d8e0e8;
+            --accent: #1f4e79;
+            --accent-soft: #eef4fa;
+            --shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
+
+            --badge-blue-bg: #eaf3ff;
+            --badge-blue-text: #204b76;
+            --badge-green-bg: #eaf7ee;
+            --badge-green-text: #24613a;
+            --badge-gold-bg: #fbf4df;
+            --badge-gold-text: #7a5a10;
+            --badge-gray-bg: #eef1f4;
+            --badge-gray-text: #4b5563;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 70px 0 0 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Times New Roman", Georgia, serif;
+            line-height: 1.65;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #123754;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 62px;
+            background: rgba(255,255,255,0.97);
+            border-bottom: 1px solid var(--line);
+            backdrop-filter: blur(6px);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav .nav-container {
+            width: 100%;
+            max-width: 1080px;
+            padding: 0 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            overflow-x: auto;
+        }
+
+        nav .nav-name {
+            font-size: 1.45em;
+            font-weight: 700;
+            color: var(--text);
+            white-space: nowrap;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 4px;
+        }
+
+        nav .nav-links a {
+            padding: 9px 12px;
+            border-radius: 7px;
+            color: #374151;
+            white-space: nowrap;
+            font-size: 0.98em;
+        }
+
+        nav .nav-links a:hover {
+            background: #f1f5f9;
+            color: var(--accent);
+        }
+
+        .container {
+            max-width: 1080px;
+            margin: 28px auto 40px auto;
+            background: var(--card);
+            box-shadow: var(--shadow);
+            padding: 44px;
+        }
+
+        section {
+            margin-top: 36px;
+        }
+
+        h2 {
+            font-size: 1.9em;
+            font-weight: 700;
+            color: #22303c;
+            border-bottom: 2px solid #22303c;
+            padding-bottom: 8px;
+            margin-bottom: 22px;
+            padding-top: 76px;
+            margin-top: -62px;
+        }
+
+        h3 {
+            font-size: 1.22em;
+            font-weight: 700;
+            color: #425466;
+            margin: 24px 0 16px 0;
+        }
+
+        .section-note {
+            margin: -6px 0 18px 0;
+            color: var(--muted);
+            font-size: 0.97em;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 34px;
+            margin-bottom: 20px;
+        }
+
+        .profile-photo {
+            flex-shrink: 0;
+        }
+
+        .profile-photo img {
+            width: 190px;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #f1f3f6;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        }
+
+        .profile-info h1 {
+            margin: 0 0 10px 0;
+            font-size: 3em;
+            color: #17212b;
+        }
+
+        .profile-role {
+            font-size: 1.14em;
+            color: #334155;
+            margin-bottom: 10px;
+        }
+
+        .profile-role strong {
+            color: var(--accent);
+        }
+
+        .profile-contact {
+            font-size: 1.05em;
+            color: #4b5563;
+        }
+
+        .button-group {
+            margin-top: 16px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .button-icon {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 8px 13px;
+            border: 1px solid var(--line);
+            background: #f8fafc;
+            color: #334155;
+            border-radius: 8px;
+            font-size: 0.97em;
+            transition: 0.2s ease;
+        }
+
+        .button-icon:hover {
+            background: var(--accent-soft);
+            border-color: #c7d5e4;
+            color: var(--accent);
+        }
+
+        .intro-note {
+            margin-top: 14px;
+            padding: 15px 17px;
+            background: #f8fafc;
+            border-left: 4px solid #c8d8ea;
+            color: #46505c;
+            font-size: 0.98em;
+        }
+
+        .interest-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .interest-tag {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 999px;
+            background: #f3f6f9;
+            border: 1px solid #dde5ee;
+            font-size: 0.9em;
+            color: #415162;
+        }
+
+        .news-shell {
+            border: 1px solid #dde5ee;
+            border-radius: 16px;
+            background: linear-gradient(to bottom, #fcfdff, #ffffff);
+            box-shadow: 0 3px 12px rgba(15, 23, 42, 0.04);
+            padding: 0;
+        }
+
+        .news-header {
+            padding: 16px 20px 12px 20px;
+            border-bottom: 1px solid #edf2f7;
+            color: #556273;
+            font-size: 0.96em;
+        }
+
+        .news-scrollbox {
+            height: 360px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-gutter: stable;
+            padding: 18px 18px 18px 26px;
+        }
+
+        .news-scrollbox::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        .news-scrollbox::-webkit-scrollbar-track {
+            background: #edf2f7;
+            border-radius: 999px;
+        }
+
+        .news-scrollbox::-webkit-scrollbar-thumb {
+            background: #b8c4d2;
+            border-radius: 999px;
+            border: 2px solid #edf2f7;
+        }
+
+        .news-scrollbox::-webkit-scrollbar-thumb:hover {
+            background: #9fb0c2;
+        }
+
+        .news-list {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            padding-left: 16px;
+        }
+
+        .news-list::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 6px;
+            bottom: 6px;
+            width: 2px;
+            background: linear-gradient(to bottom, #dbe5ef, #c8d7e6);
+        }
+
+        .news-item {
+            position: relative;
+            padding-left: 22px;
+            padding-bottom: 2px;
+        }
+
+        .news-item::before {
+            content: "";
+            position: absolute;
+            left: -6px;
+            top: 9px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 4px #eef4fa;
+        }
+
+        .news-date {
+            display: inline-block;
+            margin-bottom: 6px;
+            padding: 3px 10px;
+            border-radius: 999px;
+            background: #eef4fa;
+            color: var(--accent);
+            font-size: 0.9em;
+            font-weight: 700;
+        }
+
+        .news-text {
+            font-size: 1em;
+            color: #2f3b47;
+            line-height: 1.75;
+        }
+
+        .simple-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .simple-list li {
+            margin-bottom: 14px;
+        }
+
+        .item-title {
+            font-weight: 700;
+            font-size: 1.08em;
+            color: #1f2937;
+        }
+
+        .item-subtitle {
+            font-style: italic;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        .right-float {
+            float: right;
+            color: var(--muted);
+            font-style: normal;
+        }
+
+        .pub-list {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        .pub-card {
+            display: flex;
+            gap: 22px;
+            align-items: flex-start;
+            padding: 18px;
+            border: 1px solid #e5eaf0;
+            border-radius: 14px;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
+        }
+
+        .pub-card.featured {
+            border-color: #d7e2ee;
+            background: linear-gradient(to bottom, #fcfdff, #ffffff);
+        }
+
+        .pub-image {
+            width: 172px;
+            flex-shrink: 0;
+        }
+
+        .pub-image img {
+            width: 100%;
+            display: block;
+            border: 1px solid #d8dee6;
+            border-radius: 8px;
+        }
+
+        .pub-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .pub-topline {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 0.83em;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            border: 1px solid transparent;
+        }
+
+        .badge-blue {
+            background: var(--badge-blue-bg);
+            color: var(--badge-blue-text);
+            border-color: #d6e7fa;
+        }
+
+        .badge-green {
+            background: var(--badge-green-bg);
+            color: var(--badge-green-text);
+            border-color: #d9eddf;
+        }
+
+        .badge-gold {
+            background: var(--badge-gold-bg);
+            color: var(--badge-gold-text);
+            border-color: #f0e3b4;
+        }
+
+        .badge-gray {
+            background: var(--badge-gray-bg);
+            color: var(--badge-gray-text);
+            border-color: #dde3ea;
+        }
+
+        .pub-date {
+            color: var(--muted);
+            font-size: 0.93em;
+        }
+
+        .pub-title {
+            font-size: 1.24em;
+            font-weight: 700;
+            color: #16212b;
+            margin: 0 0 6px 0;
+        }
+
+        .pub-authors {
+            margin: 0 0 7px 0;
+            color: #374151;
+            font-size: 1em;
+        }
+
+        .pub-venue {
+            margin: 0 0 10px 0;
+            color: #5a6675;
+            font-style: italic;
+        }
+
+        .pub-note {
+            margin: 8px 0 6px 0;
+            color: #4b5563;
+            font-size: 0.96em;
+        }
+
+        .pub-links {
+            margin: 10px 0 6px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .pub-links a {
+            display: inline-block;
+            background-color: #f5f7fa;
+            border: 1px solid #d7dde5;
+            border-radius: 7px;
+            padding: 5px 10px;
+            font-size: 0.9em;
+            color: #334155;
+            text-decoration: none;
+        }
+
+        .pub-links a:hover {
+            background-color: #edf3f9;
+            color: var(--accent);
+        }
+
+
+
+        .method-tags {
+            margin: 8px 0 10px 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .method-label {
+            font-size: 0.88em;
+            font-weight: 700;
+            color: #516172;
+            margin-right: 2px;
+        }
+
+        .method-tag {
+            display: inline-block;
+            padding: 4px 9px;
+            border-radius: 999px;
+            background: #f2f5f7;
+            color: #334155;
+            border: 1px solid #e4e9ef;
+            font-size: 0.86em;
+            line-height: 1.25;
+        }
+
+        .description-list {
+            list-style-type: disc;
+            padding-left: 24px;
+            margin-top: 10px;
+        }
+
+        .description-list li {
+            margin-bottom: 8px;
+        }
+
+        .service-card,
+        .exp-card {
+            padding: 16px 18px;
+            border: 1px solid #e7ebf0;
+            border-radius: 12px;
+            background: #fff;
+            margin-bottom: 16px;
+        }
+
+        .slideshow-container {
+            position: relative;
+            margin: 18px auto 0 auto;
+            max-width: 820px;
+        }
+
+        .lpsim-slide {
+            display: none;
+        }
+
+        .lpsim-slide img {
+            width: 100%;
+            border: 1px solid #d8dee6;
+            border-radius: 8px;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 14px;
+            margin-top: -24px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            border-radius: 6px;
+            user-select: none;
+            background-color: rgba(0,0,0,0.45);
+            transition: background 0.2s ease;
+        }
+
+        .next {
+            right: 0;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.78);
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                padding: 28px 22px 36px 22px;
+            }
+
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .button-group,
+            .interest-tags {
+                justify-content: center;
+            }
+
+            .pub-card {
+                flex-direction: column;
+            }
+
+            .pub-image {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .right-float {
+                float: none;
+                display: block;
+                margin-top: 4px;
+            }
+
+            .news-scrollbox {
+                height: 330px;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .news-scrollbox {
+                height: 300px;
+                padding: 16px 14px 16px 20px;
+            }
+
+            .news-list {
+                padding-left: 14px;
+            }
+        }
+    
+
+        /* Header option variants generated for review */
+        .muted-inline { color: var(--muted); }
+        .service-line { color: #5a6675; }
+        .tag-heading { margin: 16px 0 8px 0; color: #516172; font-weight: 700; font-size: 0.95em; letter-spacing: 0.01em; }
+        .photo-caption { margin-top: 9px; font-size: 0.9em; color: var(--muted); text-align: center; }
+        .profile-identity { border-bottom: 1px solid #e6edf3; padding-bottom: 12px; margin-bottom: 14px; }
+        .header-o1 { align-items: flex-start; gap: 34px; }
+        .header-o1 .profile-info { flex: 1; min-width: 0; }
+        .header-o1 .profile-photo { order: 2; margin-top: 4px; }
+        .header-o1 .profile-photo img { width: 172px; height: 172px; border-radius: 8px; border: 1px solid #d4dce5; box-shadow: 0 2px 8px rgba(15,23,42,.05); object-fit: cover; object-position: center center; }
+        .header-o1 .profile-info h1 { font-size: 2.85em; margin-bottom: 8px; }
+        .header-o1 .intro-note { background: transparent; border-left: none; padding: 0; margin-top: 12px; color: #344054; }
+
+        .header-o2 { align-items: flex-start; gap: 34px; }
+        .header-o2 .profile-info { flex: 1; }
+        .header-o2 .profile-photo { order: 2; }
+        .header-o2 .profile-photo img { width: 165px; height: 165px; border-radius: 50%; border: 1px solid #d6e0eb; box-shadow: 0 8px 22px rgba(15,23,42,.08); }
+        .header-o2 .profile-info h1 { font-size: 2.85em; }
+        .header-o2 .intro-note { border-left: none; border-top: 1px solid #e6edf3; border-bottom: 1px solid #e6edf3; background: transparent; padding: 13px 0; }
+        .header-o2 .meta-pill { display: inline-block; border: 1px solid #e0e7ef; background: #fafbfc; border-radius: 999px; padding: 4px 9px; margin: 3px 2px 3px 0; font-size: 0.88em; color: #475467; }
+
+        .header-o3 { align-items: stretch; gap: 0; border: 1px solid #e1e8f0; border-radius: 14px; overflow: hidden; }
+        .header-o3 .profile-sidebar { width: 230px; flex-shrink: 0; background: #f7fafc; border-right: 1px solid #e1e8f0; padding: 26px 20px; text-align: center; }
+        .header-o3 .profile-photo img { width: 145px; height: 178px; border-radius: 9px; border: 1px solid #d4dce5; box-shadow: none; }
+        .header-o3 .profile-sidebar .button-group { justify-content: center; }
+        .header-o3 .profile-sidebar .button-icon { width: 100%; justify-content: center; }
+        .header-o3 .profile-sidebar .profile-contact { font-size: 0.88em; margin-top: 8px; }
+        .header-o3 .profile-info { padding: 26px 30px; }
+        .header-o3 .intro-note { background: transparent; border-left: 3px solid #c8d8ea; }
+
+        .header-o4 { display: block; }
+        .header-o4 .profile-topline { display: flex; align-items: center; gap: 20px; border-bottom: 1px solid #e6edf3; padding-bottom: 18px; margin-bottom: 16px; }
+        .header-o4 .profile-photo img { width: 86px; height: 86px; border-radius: 50%; border: 1px solid #d6e0eb; box-shadow: none; }
+        .header-o4 .profile-topline h1 { margin: 0 0 4px 0; font-size: 2.65em; }
+        .header-o4 .identity-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; margin-bottom: 14px; color: #475467; }
+        .header-o4 .intro-note { background: transparent; border-left: none; padding: 0; }
+
+        .header-o5 { align-items: flex-start; gap: 32px; }
+        .header-o5 .profile-info { flex: 1; }
+        .header-o5 .identity-card { border: 1px solid #e4ebf2; border-left: 4px solid var(--accent); border-radius: 12px; padding: 22px 24px; background: #fff; }
+        .header-o5 .identity-card h1 { font-size: 2.85em; }
+        .header-o5 .identity-card .intro-note { background: transparent; border-left: none; padding: 0; margin-top: 14px; }
+        .header-o5 .profile-photo-card { width: 230px; background: #fff; border: 1px solid #e4ebf2; border-radius: 12px; padding: 18px; text-align: center; flex-shrink: 0; }
+        .header-o5 .profile-photo img { width: 160px; height: 198px; border-radius: 10px; border: 1px solid #d4dce5; box-shadow: none; }
+        .header-o5 .profile-photo-card .button-group { justify-content: center; }
+        .header-o5 .profile-photo-card .profile-contact { font-size: 0.88em; margin-top: 10px; }
+
+        @media (max-width: 900px) {
+            .header-o1, .header-o2, .header-o5 { flex-direction: column; align-items: center; text-align: center; }
+            .header-o1 .profile-photo { order: 0; margin-top: 0; }
+            .header-o3 { flex-direction: column; }
+            .header-o3 .profile-sidebar { width: 100%; border-right: 0; border-bottom: 1px solid #e1e8f0; }
+            .header-o4 .identity-grid { grid-template-columns: 1fr; }
+        }
+
+
+/* =========================================================
+   Polished publication buttons + journal-style publication blocks
+   Local update: preserve content; use a subtle full border + left color strip;
+   keep shadow removed, following index_v3_journal_blocks_polished.html.
+   ========================================================= */
+
+.pub-list {
+    gap: 14px;
+}
+
+.pub-card {
+    position: relative;
+    border: 1px solid #e6ebf0 !important;
+    border-left: 4px solid #d3dde8 !important;
+    box-shadow: none !important;
+    border-radius: 2px !important;
+    background: #ffffff;
+    padding: 15px 18px 15px 18px;
+    gap: 20px;
+    overflow: hidden;
+}
+
+.pub-card::before {
+    display: none !important;
+}
+
+.pub-card.featured {
+    border-color: #dfe7ef !important;
+    border-left-color: #9fb7ce !important;
+    background: #ffffff !important;
+}
+
+.pub-card.featured::before {
+    display: none !important;
+}
+
+.pub-image {
+    width: 132px;
+}
+
+.pub-image img {
+    border-radius: 3px;
+    border: 1px solid #d9dee5;
+    box-shadow: none;
+}
+
+.pub-topline {
+    margin-bottom: 6px;
+}
+
+.pub-title {
+    font-size: 1.15em;
+    line-height: 1.42;
+}
+
+.pub-note {
+    color: #475467;
+}
+
+.pub-links {
+    margin: 10px 0 6px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.pub-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border: 1px solid #d3dce6;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #23486a;
+    font-size: 0.88em;
+    font-weight: 600;
+    line-height: 1.35;
+    text-decoration: none;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+    transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease, transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.pub-links a:hover {
+    background: #f6f9fc;
+    border-color: #b8c7d8;
+    color: #153a56;
+    text-decoration: none;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(15, 23, 42, 0.08);
+}
+
+.pub-links a i {
+    font-size: 0.92em;
+    opacity: 0.92;
+}
+
+.method-label {
+    color: #505d6b;
+}
+
+@media (max-width: 900px) {
+    .pub-card {
+        padding-left: 18px;
+        border-left-width: 3px !important;
+    }
+
+    .pub-image {
+        width: 100%;
+        max-width: 260px;
+    }
+}
+
+
+
+/* =========================================================
+   Research and service blocks: match journal-strip visual style
+   Slightly stronger border than publication entries; no shadow.
+   ========================================================= */
+#research .exp-card,
+#service .service-card {
+    position: relative;
+    border: 1px solid #d8e1ea !important;
+    border-left: 4px solid #b6c7d8 !important;
+    box-shadow: none !important;
+    border-radius: 2px !important;
+    background: #ffffff !important;
+    padding: 15px 18px 15px 18px;
+    margin-bottom: 14px;
+    overflow: hidden;
+}
+
+#service .service-card {
+    border-left-color: #aebfd1 !important;
+}
+
+#research .exp-card > p:first-child,
+#service .service-card > p:first-child {
+    margin-top: 0;
+}
+
+#research .exp-card > ul:last-child,
+#service .service-card > ul:last-child {
+    margin-bottom: 0;
+}
+
+#research .exp-card .pub-links,
+#service .service-card .pub-links {
+    margin-top: 8px;
+}
+
+@media (max-width: 900px) {
+    #research .exp-card,
+    #service .service-card {
+        border-left-width: 3px !important;
+        padding-left: 16px;
+    }
+}
+
+
+
+/* =========================================================
+   Final refinement: border colors matched to index_v3_academic(1).html
+   Keeps the same no-shadow, thin-left-strip structure while using
+   the V3 academic card border palette.
+   ========================================================= */
+:root {
+    --academic-card-border: #e4e8ee;
+    --academic-card-strip: #d6dde6;
+    --academic-card-strip-featured: #aebfce;
+}
+
+.pub-card,
+#research .exp-card,
+#service .service-card {
+    border: 1px solid var(--academic-card-border) !important;
+    border-left: 3px solid var(--academic-card-strip) !important;
+    box-shadow: none !important;
+}
+
+.pub-card.featured {
+    border-color: var(--academic-card-border) !important;
+    border-left-color: var(--academic-card-strip-featured) !important;
+}
+
+#research .exp-card,
+#service .service-card {
+    border-color: var(--academic-card-border) !important;
+    border-left-color: var(--academic-card-strip) !important;
+}
+
+@media (max-width: 900px) {
+    .pub-card,
+    #research .exp-card,
+    #service .service-card {
+        border-left-width: 3px !important;
+    }
+}
+
+</style>
+</head>
+<body>
+<nav>
+<div class="nav-container">
+<a class="nav-name" href="#about">Hao Zheng</a>
+<div class="nav-links">
+<a href="#about">About</a>
+<a href="#news">News</a>
+<a href="#publications">Publications</a>
+<a href="#manuscripts">Manuscripts</a>
+<a href="#research">Research</a>
+<a href="#software">Software</a>
+<a href="#service">Service</a>
+<a href="#education">Education</a>
+<a href="#theses">Theses</a>
+<a href="CV_of_Hao_Zheng.pdf" target="_blank">CV</a>
+</div>
+</div>
+</nav>
+<div class="container">
+<section class="profile-section header-o1" id="about">
+<div class="profile-photo"><img alt="Hao Zheng's photo" src="Hao_Zheng_photo.jpg"/></div>
+<div class="profile-info"><div class="profile-identity"><h1>Hao Zheng</h1><div class="profile-role"><strong>Transportation Systems · Optimization · Machine Learning</strong><br/>M.S., Civil Engineering, Tsinghua University, 2025<br/><span class="service-line">Associate Member, PIARC Technical Committee 1.1, World Road Association</span></div></div>
+<div class="profile-contact">Email: <a href="mailto:scholarhaozheng@gmail.com">scholarhaozheng@gmail.com</a> | <a href="mailto:zhengh22@mails.tsinghua.edu.cn">zhengh22@mails.tsinghua.edu.cn</a><br/></div><div class="button-group">
+<a class="button-icon" href="https://scholar.google.com/citations?user=5XSrtxwAAAAJ" target="_blank"><i class="fa-solid fa-graduation-cap"></i>Google Scholar</a>
+<a class="button-icon" href="https://orcid.org/0009-0004-8845-5137" target="_blank"><i class="fa-brands fa-orcid"></i>ORCID</a>
+<a class="button-icon" href="https://github.com/scholarhaozheng" target="_blank"><i class="fa-brands fa-github"></i>GitHub</a>
+<a class="button-icon" href="CV_of_Hao_Zheng.pdf" target="_blank"><i class="fa-solid fa-file-pdf"></i>CV</a>
+</div><div class="intro-note">My research develops optimization and machine learning methods for transportation systems, with applications in urban rail operations, multi-modal logistics, and pavement management. I am particularly interested in combining domain knowledge, network modeling, and data-driven prediction to support reliable and interpretable transportation decision-making.</div><div class="interest-tags"><span class="interest-tag">Transportation Systems</span><span class="interest-tag">Optimization</span><span class="interest-tag">Machine Learning</span><span class="interest-tag">Time Series Forecasting</span><span class="interest-tag">Graph Neural Networks</span><span class="interest-tag">Sequence-to-Sequence Models</span><span class="interest-tag">Transfer Learning</span><span class="interest-tag">Multi-Task Learning</span><span class="interest-tag">Discrete Choice Modeling</span><span class="interest-tag">Branch-and-Price</span><span class="interest-tag">Column Generation</span><span class="interest-tag">Traffic Assignment</span><span class="interest-tag">Pavement Performance Prediction</span><span class="interest-tag">Pavement Maintenance Optimization</span></div></div>
+</section>
+<section id="news">
+<h2>News</h2>
+<div class="news-shell">
+<div class="news-scrollbox">
+<div class="news-list">
+<div class="news-item">
+<div class="news-date">Jun 2026</div>
+<div class="news-text">
+<em>Integrated Routing of Trucks and Robots for Multi-Modal Urban Express Logistics</em> was accepted for publication in <em>Transportation Research Record</em>.
+                            </div>
+</div>
+<div class="news-item">
+<div class="news-date">Jun 2026</div>
+<div class="news-text">
+<em>An Operational Scheduling Framework for Pavement Maintenance Activities: From Rule-Based Task Generation to Branch-and-Price-Based Route Optimization</em> received a major-revision invitation from <em>International Journal of Pavement Engineering</em>.
+    </div>
+</div>
+<div class="news-item">
+<div class="news-date">May 2026</div>
+<div class="news-text">
+<strong>KNOWCAST</strong> was published in <em>Transportation Research Part C: Emerging Technologies</em>, Volume 189, Article 105710.
+        DOI: <a href="https://doi.org/10.1016/j.trc.2026.105710" target="_blank">10.1016/j.trc.2026.105710</a>.
+    </div>
+</div>
+<div class="news-item">
+<div class="news-date">Apr 2026</div>
+<div class="news-text">
+Appointed as <strong>Associate Member of PIARC Technical Committee 1.1</strong>, World Road Association.
+                            </div>
+</div>
+<div class="news-item">
+<div class="news-date">Jan 2026</div>
+<div class="news-text">
+Participated in the <strong>TRB 105th Annual Meeting</strong>.
+                            </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="publications">
+<h2>Publications</h2>
+<h3>Journal &amp; Conference Papers</h3>
+<div class="pub-list">
+<div class="pub-card">
+<div class="pub-image">
+<img alt="KNOWCAST thumbnail" src="KNOWCAST_Figure.png"/>
+</div>
+<div class="pub-content">
+<div class="pub-topline">
+<span class="badge badge-green">Published</span>
+<span class="pub-date">Published 05/2026 · Vol. 189 · Article 105710</span>
+</div>
+<p class="pub-title">KNOWCAST: Domain-knowledge-integrated deep learning for metro OD forecasting and path flow estimation</p>
+<p class="pub-authors"><strong>Hao Zheng</strong>, Han Zheng, George Giannopoulos.</p>
+<p class="pub-venue"><em>Transportation Research Part C: Emerging Technologies</em>, Volume 189, 2026, Article 105710. ISSN 0968-090X. DOI: <a href="https://doi.org/10.1016/j.trc.2026.105710" target="_blank">10.1016/j.trc.2026.105710</a>.</p>
+<p class="pub-note">This work integrates trip generation, trip distribution, and traffic assignment knowledge into a sequence-to-sequence framework for joint metro OD forecasting and path-flow estimation.</p>
+<div class="pub-links">
+<a href="https://doi.org/10.1016/j.trc.2026.105710" target="_blank"><i aria-hidden="true" class="fa-regular fa-file-lines"></i><span>Paper</span></a>
+<a href="https://github.com/scholarhaozheng/KNOWCAST" target="_blank"><i aria-hidden="true" class="fa-brands fa-github"></i><span>Code</span></a>
+</div><div class="method-tags"><span class="method-label">Method</span><span class="method-tag">Graph Neural Networks</span><span class="method-tag">Sequence-to-Sequence Models</span><span class="method-tag">Knowledge-Guided Learning</span></div>
+</div>
+</div>
+<div class="pub-card">
+<div class="pub-image">
+<img alt="Logistics thumbnail" src="LT_ADR_Figure.png"/>
+</div>
+<div class="pub-content">
+<div class="pub-topline">
+<span class="badge badge-green">Accepted</span>
+<span class="pub-date">Accepted 06/2026 · Presented at TRB 01/2026</span>
+</div>
+<p class="pub-title">Integrated Routing of Trucks and Robots for Multi-Modal Urban Express Logistics.</p>
+<p class="pub-authors"><strong>Hao Zheng</strong>, Han Zheng*, George Giannopoulos.</p>
+<p class="pub-venue"><em>Transportation Research Record</em>. Accepted for publication. Presented at the <em>TRB 105th Annual Meeting</em>, 2026.</p>
+<p class="pub-note">This paper studies integrated truck-and-robot routing for urban express logistics using a space-time network formulation and branch-and-price optimization.</p>
+<div class="pub-links">
+<a href="https://github.com/scholarhaozheng/Software-Package-for-Hybrid-Route-Planning-of-Same-Day-and-Regular-Deliveries-in-Space-Time-Networks" target="_blank"><i aria-hidden="true" class="fa-brands fa-github"></i><span>Code</span></a>
+</div><div class="method-tags"><span class="method-label">Method</span><span class="method-tag">Space-Time Network Modeling</span><span class="method-tag">Branch-and-Price</span><span class="method-tag">Column Generation</span><span class="method-tag">C#/Gurobi</span></div>
+</div>
+</div>
+<div class="pub-card">
+<div class="pub-image">
+<img alt="Vibration thumbnail" src="Vehicle_Vibration.png"/>
+</div>
+<div class="pub-content">
+<div class="pub-topline">
+<span class="badge badge-green">Published</span>
+<span class="pub-date">2025</span>
+</div>
+<p class="pub-title">Vehicle Vibration Modeling via Road Profile Reconstruction and Simulation: Coupled Analysis of IRI, Speed, and Ride Comfort for Driving Assistance</p>
+<p class="pub-authors">Jiantao Li, Yian Zhao, <strong>Hao Zheng</strong>, Runhua Guo.</p>
+<p class="pub-venue"><em>Road Materials and Pavement Design</em>, 2025</p>
+<div class="pub-links">
+<a href="https://doi.org/10.1080/14680629.2025.2574300" target="_blank"><i aria-hidden="true" class="fa-regular fa-file-lines"></i><span>Paper</span></a>
+</div><div class="method-tags"><span class="method-label">Method</span><span class="method-tag">Road Profile Reconstruction</span><span class="method-tag">Vehicle Dynamics Simulation</span><span class="method-tag">IRI-Based Modeling</span></div>
+</div>
+</div>
+<div class="pub-card">
+<div class="pub-image">
+<img alt="IEEE T-ITS thumbnail" src="Improving Synchronization in High Speed Railway and Air Intermodality.png"/>
+</div>
+<div class="pub-content">
+<div class="pub-topline">
+<span class="badge badge-green">Published</span>
+<span class="pub-date">2022</span>
+</div>
+<p class="pub-title">Improving Synchronization in High-Speed Railway and Air Intermodality: Integrated Train Timetable Rescheduling and Passenger Flow Forecasting.</p>
+<p class="pub-authors">Yuyan Tan, Yibo Li, Ruxin Wang, Xiwei Mi, Yaxuan Li, <strong>Hao Zheng</strong>, Yu Ke, Yan Wang.</p>
+<p class="pub-venue"><em>IEEE Transactions on Intelligent Transportation Systems</em>, 2022</p>
+<div class="pub-links">
+<a href="https://doi.org/10.1109/TITS.2021.3137410" target="_blank"><i aria-hidden="true" class="fa-regular fa-file-lines"></i><span>Paper</span></a>
+</div><div class="method-tags"><span class="method-label">Method</span><span class="method-tag">Timetable Rescheduling</span><span class="method-tag">Passenger Flow Forecasting</span><span class="method-tag">Multi-Objective Optimization</span></div>
+</div>
+</div>
+<div class="pub-card">
+<div class="pub-image">
+<img alt="Customized Bus thumbnail" src="Study on Customized Shuttle Transit Mode Responding to Spatiotemporal Inhomogeneous Demand in Super-Peak_Figure.png"/>
+</div>
+<div class="pub-content">
+<div class="pub-topline">
+<span class="badge badge-green">Published</span>
+<span class="pub-date">2021</span>
+</div>
+<p class="pub-title">Study on Customized Shuttle Transit Mode Responding to Spatiotemporal Inhomogeneous Demand in Super-Peak.</p>
+<p class="pub-authors"><strong>Hao Zheng</strong>, Xingchen Zhang, Junhua Chen.</p>
+<p class="pub-venue"><em>Information</em>, 2021, 12:429</p>
+<div class="pub-links">
+<a href="https://doi.org/10.3390/info12100429" target="_blank"><i aria-hidden="true" class="fa-regular fa-file-lines"></i><span>Paper</span></a>
+<a href="https://github.com/scholarhaozheng/A-Multi-Type-Customized-Shuttle-Bus-Route-Planning-Software" target="_blank"><i aria-hidden="true" class="fa-brands fa-github"></i><span>Code</span></a>
+</div><div class="method-tags"><span class="method-label">Method</span><span class="method-tag">Pickup-and-Delivery with Time Windows</span><span class="method-tag">ALNS</span><span class="method-tag">Tabu Search</span></div>
+</div>
+</div>
+<div class="pub-card">
+<div class="pub-image">
+<img alt="WTC thumbnail" src="WTC.png"/>
+</div>
+<div class="pub-content">
+<div class="pub-topline">
+<span class="badge badge-green">Published</span>
+<span class="pub-date">2021</span>
+</div>
+<p class="pub-title">Dynamic Planning Model and Solution Algorithm for the Demand-responsive Customized Bus Route.</p>
+<p class="pub-authors"><strong>Hao Zheng</strong>, Yun Wang*, Xuedong Yan, Yunwei Li.</p>
+<p class="pub-venue"><em>World Transport Convention (WTC) Proceedings</em>, 2021</p>
+<div class="pub-links">
+<a href="https://github.com/scholarhaozheng/Dynamic-Planning-Model-and-Solution-Algorithm-for-the-Demand-responsive-Customized-Bus-Route" target="_blank"><i aria-hidden="true" class="fa-brands fa-github"></i><span>Code</span></a>
+</div><div class="method-tags"><span class="method-label">Method</span><span class="method-tag">Two-Stage Planning</span><span class="method-tag">Dynamic Insertion</span><span class="method-tag">Route Re-Optimization</span></div>
+</div>
+</div>
+</div>
+<h3>Book</h3>
+<div class="pub-list">
+<div class="pub-card">
+<div class="pub-image">
+<img alt="Ningxia Book Cover" src="NingXia.png"/>
+</div>
+<div class="pub-content">
+<div class="pub-topline">
+<span class="badge badge-green">Published</span>
+<span class="pub-date">2024</span>
+</div>
+<p class="pub-title">Green Development Paths and Strategies for Comprehensive Transportation in Ningxia</p>
+<p class="pub-authors">Huapu Lu, Fang Wang, Runhua Guo, Sa Xu, et al., and <strong>Hao Zheng</strong>.</p>
+<p class="pub-venue">Book | ISBN: 9787114195624</p>
+</div>
+</div>
+</div>
+</section>
+<section id="manuscripts">
+<h2>Manuscripts Under Review and Working Papers</h2>
+<h3>Under Review</h3>
+<div class="pub-list">
+<div class="pub-card featured">
+<div class="pub-image">
+<img alt="Pavement scheduling thumbnail" src="Vehicle_Route_Planning_Figure.png"/>
+</div>
+<div class="pub-content">
+<div class="pub-topline">
+<span class="badge badge-gold">Revised</span>
+<span class="pub-date">Revised manuscript submitted after major revision · 2026</span>
+</div>
+<p class="pub-title">An Operational Scheduling Framework for Pavement Maintenance Activities: From Rule-Based Task Generation to Branch-and-Price-Based Route Optimization</p>
+<p class="pub-authors"><strong>Hao Zheng</strong>, Jiantao Li, Yian Zhao, Xi Zhu, Runhua Guo*.</p>
+<p class="pub-venue">Revised manuscript submitted after major revision, <em>International Journal of Pavement Engineering</em>.</p>
+<p class="pub-note">This manuscript links rule-based pavement maintenance task generation with branch-and-price-based vehicle routing for operational maintenance scheduling.</p>
+<div class="pub-links">
+<a href="https://github.com/scholarhaozheng/Decision_Making_for_Pavement_Maintenance_Strategies_and_a_VRP_model_for_Execution" target="_blank"><i aria-hidden="true" class="fa-brands fa-github"></i><span>Code</span></a>
+</div><div class="method-tags"><span class="method-label">Method</span><span class="method-tag">VRPTW</span><span class="method-tag">Road Network Modeling</span><span class="method-tag">Branch-and-Price</span><span class="method-tag">Column Generation</span></div>
+</div>
+</div>
+<div class="pub-card featured">
+<div class="pub-image">
+<img alt="Public-data-assisted staged transfer learning thumbnail" src="Multi-Staged Multi-Task Learning for Reliable Pavement Time-Series Prediction with Data Supplementation_Plan.png"/>
+</div>
+<div class="pub-content">
+<div class="pub-topline">
+<span class="badge badge-blue">Submitted</span>
+<span class="pub-date">Submitted 07/2026</span>
+</div>
+<p class="pub-title">Public-Data-Assisted Staged Transfer Learning for Local Pavement Condition Prediction across Shared and Local Indicators</p>
+<p class="pub-authors"><strong>Hao Zheng</strong>, Xi Zhu, Long Wen, Jiantao Li, Weining Zhou, Runhua Guo*.</p>
+<p class="pub-venue">Submitted to <em>International Journal of Pavement Engineering</em>.</p>
+<p class="pub-note">This manuscript develops a public-data-assisted staged transfer-learning framework that uses shared public-data indicators, IRI and RD, to support local PCI prediction under limited local records and heterogeneous indicator systems.</p>
+<div class="pub-links">
+<a href="https://github.com/scholarhaozheng/Pave-ML-Multi-Task-Learning-for-Pavement-Performance-Indicators" target="_blank"><i aria-hidden="true" class="fa-brands fa-github"></i><span>Code</span></a>
+</div><div class="method-tags"><span class="method-label">Method</span><span class="method-tag">Transfer Learning</span><span class="method-tag">Multi-Task Learning</span><span class="method-tag">Sequence-to-Sequence Models</span></div>
+</div>
+</div>
+</div>
+<h3>In Preparation</h3>
+<div class="pub-list">
+<div class="pub-card">
+<div class="pub-image">
+<img alt="DISCERN thumbnail" src="DISCERN_Figure.png"/>
+</div>
+<div class="pub-content">
+<div class="pub-topline">
+<span class="badge badge-gray">In Preparation</span>
+<span class="pub-date">2026</span>
+</div>
+<p class="pub-title">DISCERN: Discrete Choice with Embedded Representation Networks.</p>
+<p class="pub-authors"><strong>Hao Zheng</strong>, Han Zheng*, George A. Giannopoulos.</p>
+<p class="pub-venue">Manuscript in preparation.</p>
+<p class="pub-note">This manuscript embeds theory-driven discrete choice modeling within a neural representation framework for behavioral-parameter calibration using large-scale macroscopic data.</p><div class="method-tags"><span class="method-label">Method</span><span class="method-tag">Discrete Choice Models</span><span class="method-tag">Representation Learning</span><span class="method-tag">Gradient-Based Estimation</span></div>
+</div>
+</div>
+<div class="pub-card">
+<div class="pub-image">
+<img alt="LPSim thumbnail" src="LPSim_Figure.png"/>
+</div>
+<div class="pub-content">
+<div class="pub-topline">
+<span class="badge badge-gray">In Preparation</span>
+<span class="pub-date">2026</span>
+</div>
+<p class="pub-title">A Bilevel Optimization Framework for Collaborative Strategies between Infrastructure and Mobility Service Providers.</p>
+<p class="pub-authors"><strong>Hao Zheng</strong>, Yuhan Tang, Nina Cao, Yibo Zhao, Xuan Jiang*, Dingyi Zhuang, Shenhao Wang, Haris N. Koutsopoulos, and Jinhua Zhao.</p>
+<p class="pub-venue">Manuscript in preparation.</p>
+<p class="pub-note">This manuscript develops a bilevel optimization framework coupled with GPU-based microscopic traffic simulation to study collaborative strategies between infrastructure and mobility service providers.</p>
+<div class="pub-links">
+<a href="https://github.com/Xuan-1998/LPSim/pull/24" target="_blank"><i aria-hidden="true" class="fa-brands fa-github"></i><span>Code Contribution</span></a>
+</div><div class="method-tags"><span class="method-label">Method</span><span class="method-tag">Bilevel Optimization</span><span class="method-tag">Simulation Optimization</span><span class="method-tag">Microscopic Traffic Simulation</span><span class="method-tag">C++/CUDA</span></div>
+</div>
+</div>
+</div>
+</section>
+<section id="research">
+<h2>Research</h2>
+<div class="exp-card">
+<p><span class="item-title">Computational Benchmarking of Scalable Traffic Assignment on Open Transportation Networks</span> <span class="right-float">2025 – Present</span></p>
+<p class="item-subtitle">Research Collaborator with Prof. Xuesong Zhou</p>
+<ul class="description-list"><li>Built an experimental pipeline converting TNTP-style benchmark networks into unified link–demand formats and generating path sets for path-based traffic assignment.</li><li>Evaluated path-compression strategies across compression ratios and demand levels, comparing solver time, objective gaps, and link-flow fit against baseline solutions.</li></ul>
+</div>
+<div class="exp-card">
+<p><span class="item-title">Bilevel Optimization Framework for Tolling Strategy in Autonomous Networks</span> <span class="right-float">06/2025 – 10/2025</span></p>
+<p class="item-subtitle">MIT-UF-NEU Summer Research Camp | Supervisor: Prof. Jinhua Zhao, MIT; Mentor: Dr. Xuan Jiang</p>
+<div class="pub-links">
+<a href="https://github.com/Xuan-1998/LPSim/pull/24" target="_blank"><i aria-hidden="true" class="fa-brands fa-github"></i><span>Code Contribution</span></a>
+</div>
+<ul class="description-list"><li>Designed an end-to-end bilevel optimization workflow for tolling strategy design, modeling interactions between infrastructure operators and autonomous vehicle fleets.</li><li>Implemented the Python-based upper-level optimization loop and re-engineered a C++/CUDA microscopic traffic simulator to support toll-responsive agent behavior.</li></ul>
+<div class="slideshow-container">
+<div class="lpsim-slide">
+<img alt="LPSim Framework Diagram" src="LPSim_Framework_01.jpg"/>
+</div>
+<div class="lpsim-slide">
+<img alt="LPSim Project Summary" src="The Elevator Pitch Slide_01.jpg"/>
+</div>
+<a class="prev" onclick="plusSlides(-1)">❮</a>
+<a class="next" onclick="plusSlides(1)">❯</a>
+</div>
+</div>
+<div class="exp-card">
+<p><span class="item-title">Intelligent Road Asset Management: Prediction and Decision-Support Models</span> <span class="right-float">2023 – 2025</span></p>
+<p class="item-subtitle">Digital Transportation Management Platform | Supervisor: Prof. Runhua Guo</p>
+<ul class="description-list"><li>Developed core prediction and maintenance decision modules for a digital road asset management platform, integrating pavement condition forecasting with maintenance strategy optimization.</li><li>Built GRU/attention-based pavement performance prediction models using climate, traffic, material, and LTPP data, and implemented budget- and performance-constrained maintenance decision models.</li></ul>
+</div>
+<div class="exp-card">
+<p><span class="item-title">Strategic Framework for Green Transportation &amp; Infrastructure Management (Researcher &amp; Contributing Author)</span> <span class="right-float">2022 – 2024</span></p>
+<p class="item-subtitle">Project: Coordinating Ecological Protection with Carbon Peaking and Neutrality Goals in the Yellow River Basin | Supervisor: Prof. Runhua Guo</p>
+<ul class="description-list">
+<li>Researched and formulated technical roadmaps for the resource utilization of solid waste in highway construction, focusing on recycled asphalt and industrial by-products.</li>
+<li>Analyzed infrastructure lifecycle management strategies, including intelligent inspection methods, pavement performance prediction, and maintenance decision-making models.</li>
+<li>Under the primary guidance of Prof. Guo, authored two key chapters (Chapter 3: Green Construction; Chapter 4: Green Operations &amp; Maintenance) of the project's resulting book, published by the China Communications Press.</li>
+</ul>
+</div>
+<div class="exp-card">
+<p><span class="item-title">Comparative Analysis of Road Design Standards for Belt and Road Projects (Research Analyst)</span> <span class="right-float">2023</span></p>
+<p class="item-subtitle">Project: Differentiated Research on Engineering Projects along the Belt and Road: Sri Lanka | Supervisor: Prof. Runhua Guo</p>
+<ul class="description-list">
+<li>Conducted a comparative analysis of highway design standards between China and key Belt and Road countries (e.g., Sri Lanka, Pakistan) to provide technical guidance for international projects.</li>
+<li>Conducted a comparative analysis of the standards for highway construction and acceptance between China and Sri Lanka, with a focus on asphalt pavement design philosophies, to formulate conversion methods and investigate universal acceptance criteria.</li>
+<li>Authored a technical report identifying critical differences in design parameters (e.g., standard axle loads, material specifications, reliability levels) to facilitate the adaptation of Chinese engineering practices abroad.</li>
+</ul>
+</div>
+<div class="exp-card">
+<p><span class="item-title">Customized Bus and Air–Rail Intermodal Optimization</span> <span class="right-float">2020 – 2022</span></p>
+<p class="item-subtitle">National University Student Innovation &amp; Entrepreneurship Development Program | Project Leader</p>
+<ul class="description-list"><li>Led the development of a two-stage optimization framework for air–rail passenger transfers, combining high-speed rail timetable adjustment with customized bus route planning.</li><li>Modeled the airport–station connection as a vehicle routing problem with time windows and transfers, and developed a hybrid ALNS–Tabu Search algorithm; the resulting software received a national software copyright.</li></ul>
+</div>
+</section>
+<section id="software">
+<h2>Software</h2>
+<p class="section-note">Software and code are continually updated on <a href="https://github.com/scholarhaozheng" target="_blank">github.com/scholarhaozheng</a>.</p>
+<ul class="simple-list">
+<li>
+<p>
+<span class="item-title"><a href="https://github.com/scholarhaozheng/Pave-ML-Multi-Task-Learning-for-Pavement-Performance-Indicators" target="_blank">Pave-ML-Multi-Task Learning for Pavement Performance Indicators</a></span> (Python)
+                        <span class="right-float">Initial release: 2025</span>
+</p>
+</li>
+<li>
+<p>
+<span class="item-title"><a href="https://github.com/scholarhaozheng/Decision_Making_for_Pavement_Maintenance_Strategies_and_a_VRP_Model_for_Execution" target="_blank">Pavement Maintenance Decision-Making and a VRP Model for Execution</a></span> (Python)
+                        <span class="right-float">Initial release: 2025</span>
+</p>
+</li>
+<li>
+<p>
+<span class="item-title"><a href="https://github.com/scholarhaozheng/Dynamic_Short-Term_Prediction_of_Urban_Rail_Origin-Destination_Flow" target="_blank">Dynamic Short-Term Prediction of Urban Rail Origin-Destination Flow</a></span> (Python)
+                        <span class="right-float">Initial release: 2024</span>
+</p>
+</li>
+<li>
+<p>
+<span class="item-title"><a href="https://github.com/scholarhaozheng/Software-Package-for-Hybrid-Route-Planning-of-Same-Day-and-Regular-Deliveries-in-Space-Time-Networks" target="_blank">Hybrid Route Planning of Same-Day and Regular Deliveries in Space-Time Networks</a></span> (C#)
+                        <span class="right-float">Initial release: 2023</span>
+</p>
+</li>
+<li>
+<p>
+<span class="item-title"><a href="https://github.com/scholarhaozheng/A-Multi-Type-Customized-Shuttle-Bus-Route-Planning-Software" target="_blank">A Multi-Type Customized Shuttle Bus Route Planning Software</a></span> (MATLAB)
+                        <span class="right-float">Initial release: 2021</span>
+</p>
+</li>
+</ul>
+</section>
+<section id="service">
+<h2>Professional Service</h2>
+<div class="service-card">
+<p>
+<span class="item-title">Associate Member, PIARC Technical Committee 1.1</span>
+<span class="right-float">04/2026 – Present</span>
+</p>
+<p class="item-subtitle">World Road Association (PIARC)</p>
+<ul class="description-list">
+<li>Began serving as an Associate Member of PIARC Technical Committee 1.1 in April 2026.</li>
+<li>Participate in international committee activities on transport planning, administration, and the future development of transport agencies.</li>
+</ul>
+</div>
+<div class="service-card">
+<p>
+<span class="item-title">Contributor, PIARC TC 1.1 Working Group 1 Survey Report</span>
+<span class="right-float">04/2026 – Present</span>
+</p>
+<p class="item-subtitle">Working Group 1: Envisioning the Transport Agency of the Future</p>
+<ul class="description-list">
+<li>Contribute to survey analysis, evidence synthesis, and report drafting for the WG1 international survey report.</li>
+<li>Participate in discussions on response patterns across agencies and countries, including LMIC-related perspectives.</li>
+</ul>
+</div>
+</section>
+<section id="education">
+<h2>Education</h2>
+<ul class="simple-list">
+<li>
+<p>
+<span class="item-title">Tsinghua University</span>, School of Civil Engineering, Master of Science
+                        <span class="right-float">09/2022 - 06/2025</span>
+</p>
+</li>
+<li>
+<p>
+<span class="item-title">Beijing Jiaotong University</span>, School of Traffic and Transportation, Bachelor of Engineering
+                        <span class="right-float">09/2018 - 06/2022</span>
+</p>
+</li>
+</ul>
+</section>
+<section id="theses">
+<h2>Theses</h2>
+<ul class="simple-list">
+<li>
+<p><span class="item-title">Master Thesis:</span> A Comprehensive Full-Process Planning Model for Pavement Performance Forecasting and Maintenance Strategy Implementation under Missing Data Conditions. <span class="right-float">06/2025</span></p>
+</li>
+<li>
+<p><span class="item-title">Undergraduate Thesis:</span> Customized Bus Planning Method Responding to Spatiotemporal Concentrated Demand in Super-peak. <span class="right-float">06/2022</span></p>
+</li>
+</ul>
+</section>
+</div>
+<script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("lpsim-slide");
+            if (slides.length === 0) return;
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex - 1].style.display = "block";
+        }
+    </script>
+</body>
+</html>
