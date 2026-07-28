@@ -530,7 +530,6 @@
             margin-bottom: 8px;
         }
 
-        .service-card,
         .exp-card {
             padding: 16px 18px;
             border: 1px solid #e7ebf0;
@@ -798,11 +797,11 @@
 
 
 /* =========================================================
-   Research and service blocks: match journal-strip visual style
+   Experience and research blocks: match journal-strip visual style
    Slightly stronger border than publication entries; no shadow.
    ========================================================= */
-#research .exp-card,
-#service .service-card {
+#experience .exp-card,
+#research .exp-card {
     position: relative;
     border: 1px solid #d8e1ea !important;
     border-left: 4px solid #b6c7d8 !important;
@@ -814,28 +813,25 @@
     overflow: hidden;
 }
 
-#service .service-card {
-    border-left-color: #aebfd1 !important;
-}
 
-#research .exp-card > p:first-child,
-#service .service-card > p:first-child {
+#experience .exp-card > p:first-child,
+#research .exp-card > p:first-child {
     margin-top: 0;
 }
 
-#research .exp-card > ul:last-child,
-#service .service-card > ul:last-child {
+#experience .exp-card > ul:last-child,
+#research .exp-card > ul:last-child {
     margin-bottom: 0;
 }
 
-#research .exp-card .pub-links,
-#service .service-card .pub-links {
+#experience .exp-card .pub-links,
+#research .exp-card .pub-links {
     margin-top: 8px;
 }
 
 @media (max-width: 900px) {
-    #research .exp-card,
-    #service .service-card {
+    #experience .exp-card,
+    #research .exp-card {
         border-left-width: 3px !important;
         padding-left: 16px;
     }
@@ -855,8 +851,8 @@
 }
 
 .pub-card,
-#research .exp-card,
-#service .service-card {
+#experience .exp-card,
+#research .exp-card {
     border: 1px solid var(--academic-card-border) !important;
     border-left: 3px solid var(--academic-card-strip) !important;
     box-shadow: none !important;
@@ -867,17 +863,136 @@
     border-left-color: var(--academic-card-strip-featured) !important;
 }
 
-#research .exp-card,
-#service .service-card {
+#experience .exp-card,
+#research .exp-card {
     border-color: var(--academic-card-border) !important;
     border-left-color: var(--academic-card-strip) !important;
 }
 
 @media (max-width: 900px) {
     .pub-card,
-    #research .exp-card,
-    #service .service-card {
+    #experience .exp-card,
+    #research .exp-card {
         border-left-width: 3px !important;
+    }
+}
+
+
+/* =========================================================
+   Honors & Recognition
+   Featured institutional recognition with one documentary photo.
+   ========================================================= */
+#recognition .recognition-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 18px;
+    border: 1px solid var(--academic-card-border);
+    border-left: 3px solid var(--academic-card-strip-featured);
+    background: #ffffff;
+}
+
+#recognition .recognition-image {
+    width: 245px;
+    flex-shrink: 0;
+}
+
+#recognition .recognition-image a {
+    display: block;
+}
+
+#recognition .recognition-image img {
+    width: 100%;
+    display: block;
+    border: 1px solid #d9dee5;
+    border-radius: 3px;
+}
+
+#recognition .recognition-content {
+    flex: 1;
+    min-width: 0;
+}
+
+#recognition .recognition-content > p:first-child {
+    margin-top: 0;
+}
+
+#recognition .recognition-content > p:last-child {
+    margin-bottom: 0;
+}
+
+#recognition .recognition-description {
+    margin: 10px 0 8px 0;
+    color: #374151;
+}
+
+#recognition .photo-caption {
+    margin-top: 7px;
+    color: var(--muted);
+    font-size: 0.83em;
+    line-height: 1.45;
+    text-align: left;
+}
+
+#recognition .selected-honors-heading {
+    margin: 24px 0 12px 0;
+    color: #425466;
+    font-size: 1.15em;
+    font-weight: 700;
+}
+
+#recognition .honors-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--academic-card-border);
+    border-left: 3px solid var(--academic-card-strip);
+    background: #ffffff;
+}
+
+#recognition .honors-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 11px 14px;
+    border-bottom: 1px solid #edf0f3;
+}
+
+#recognition .honors-list li:last-child {
+    border-bottom: none;
+}
+
+#recognition .honor-title {
+    color: #1f2937;
+    line-height: 1.55;
+}
+
+#recognition .honor-date {
+    flex-shrink: 0;
+    color: var(--muted);
+    white-space: nowrap;
+}
+
+@media (max-width: 680px) {
+    #recognition .honors-list li {
+        display: block;
+    }
+
+    #recognition .honor-date {
+        display: block;
+        margin-top: 3px;
+    }
+}
+
+@media (max-width: 900px) {
+    #recognition .recognition-card {
+        flex-direction: column;
+    }
+
+    #recognition .recognition-image {
+        width: 100%;
+        max-width: 360px;
     }
 }
 
@@ -892,9 +1007,10 @@
 <a href="#news">News</a>
 <a href="#publications">Publications</a>
 <a href="#manuscripts">Manuscripts</a>
+<a href="#experience">Experience</a>
 <a href="#research">Research</a>
 <a href="#software">Software</a>
-<a href="#service">Service</a>
+<a href="#recognition">Recognition</a>
 <a href="#education">Education</a>
 <a href="#theses">Theses</a>
 <a href="CV_of_Hao_Zheng.pdf" target="_blank">CV</a>
@@ -904,7 +1020,7 @@
 <div class="container">
 <section class="profile-section header-o1" id="about">
 <div class="profile-photo"><img alt="Hao Zheng's photo" src="Hao_Zheng_photo.jpg"/></div>
-<div class="profile-info"><div class="profile-identity"><h1>Hao Zheng</h1><div class="profile-role"><strong>Transportation Systems · Optimization · Machine Learning</strong><br/>M.S., Civil Engineering, Tsinghua University, 2025<br/><span class="service-line">Associate Member, PIARC Technical Committee 1.1, World Road Association</span></div></div>
+<div class="profile-info"><div class="profile-identity"><h1>Hao Zheng</h1><div class="profile-role"><strong>Transportation Systems · Optimization · Machine Learning</strong><br/>M.S., Civil Engineering, Tsinghua University, 2025<br/><span class="service-line">Research Assistant, Beijing Jiaotong University</span><br/><span class="service-line">Associate Member, PIARC Technical Committee 1.1, World Road Association</span></div></div>
 <div class="profile-contact">Email: <a href="mailto:scholarhaozheng@gmail.com">scholarhaozheng@gmail.com</a> | <a href="mailto:zhengh22@mails.tsinghua.edu.cn">zhengh22@mails.tsinghua.edu.cn</a><br/></div><div class="button-group">
 <a class="button-icon" href="https://scholar.google.com/citations?user=5XSrtxwAAAAJ" target="_blank"><i class="fa-solid fa-graduation-cap"></i>Google Scholar</a>
 <a class="button-icon" href="https://orcid.org/0009-0004-8845-5137" target="_blank"><i class="fa-brands fa-orcid"></i>ORCID</a>
@@ -1159,6 +1275,24 @@ Participated in the <strong>TRB 105th Annual Meeting</strong>.
 </div>
 </div>
 </section>
+<section id="experience">
+<h2>Professional Experience &amp; Appointments</h2>
+<div class="exp-card">
+<p><span class="item-title">Research Assistant</span> <span class="right-float">07/2025 – Present</span></p>
+<p class="item-subtitle">Beijing Jiaotong University</p>
+<ul class="description-list">
+<li>Conduct research in transportation systems, optimization, and machine learning, with an emphasis on transportation network modeling and computational methods.</li>
+</ul>
+</div>
+<div class="exp-card">
+<p><span class="item-title">Associate Member, PIARC Technical Committee 1.1</span> <span class="right-float">04/2026 – Present</span></p>
+<p class="item-subtitle">World Road Association (PIARC) · Professional Appointment</p>
+<ul class="description-list">
+<li>Serve on Technical Committee 1.1 and participate in international activities concerning transport planning, administration, and the future development of transport agencies.</li>
+<li>Contribute to the Working Group 1 international survey report through survey analysis, evidence synthesis, and drafting, including review of response patterns across agencies, countries, and LMIC contexts.</li>
+</ul>
+</div>
+</section>
 <section id="research">
 <h2>Research</h2>
 <div class="exp-card">
@@ -1249,30 +1383,51 @@ Participated in the <strong>TRB 105th Annual Meeting</strong>.
 </li>
 </ul>
 </section>
-<section id="service">
-<h2>Professional Service</h2>
-<div class="service-card">
-<p>
-<span class="item-title">Associate Member, PIARC Technical Committee 1.1</span>
-<span class="right-float">04/2026 – Present</span>
-</p>
-<p class="item-subtitle">World Road Association (PIARC)</p>
-<ul class="description-list">
-<li>Began serving as an Associate Member of PIARC Technical Committee 1.1 in April 2026.</li>
-<li>Participate in international committee activities on transport planning, administration, and the future development of transport agencies.</li>
-</ul>
+<section id="recognition">
+<h2>Honors &amp; Recognition</h2>
+<div class="recognition-card">
+<div class="recognition-image">
+<a href="https://www.tsinghua.edu.cn/info/2935/97710.htm" target="_blank" rel="noopener noreferrer">
+<img alt="Hao Zheng delivering the incoming master's student address at Tsinghua University's 2022 Graduate Student Opening Ceremony" src="Tsinghua_2022_Graduate_Opening_Ceremony.jpg"/>
+</a>
+<div class="photo-caption">Hao Zheng delivering the incoming master's student address. Photo: Wenpeng Cao / Tsinghua University.</div>
 </div>
-<div class="service-card">
+<div class="recognition-content">
 <p>
-<span class="item-title">Contributor, PIARC TC 1.1 Working Group 1 Survey Report</span>
-<span class="right-float">04/2026 – Present</span>
+<span class="item-title">Incoming Master's Student Representative and Speaker</span>
+<span class="right-float">08/2022</span>
 </p>
-<p class="item-subtitle">Working Group 1: Envisioning the Transport Agency of the Future</p>
-<ul class="description-list">
-<li>Contribute to survey analysis, evidence synthesis, and report drafting for the WG1 international survey report.</li>
-<li>Participate in discussions on response patterns across agencies and countries, including LMIC-related perspectives.</li>
-</ul>
+<p class="item-subtitle">Tsinghua University 2022 Graduate Student Opening Ceremony</p>
+<p class="recognition-description">Represented the incoming master's student cohort and delivered an address titled <em>“Go into the Wider World, and Learn through Firsthand Practice”</em> at Tsinghua University's university-wide graduate student opening ceremony.</p>
+<div class="pub-links">
+<a href="https://www.tsinghua.edu.cn/info/1173/97721.htm" target="_blank" rel="noopener noreferrer"><i aria-hidden="true" class="fa-solid fa-microphone-lines"></i><span>Full Address</span></a>
+<a href="https://www.tsinghua.edu.cn/en/info/1399/11520.htm" target="_blank" rel="noopener noreferrer"><i aria-hidden="true" class="fa-solid fa-building-columns"></i><span>Official News</span></a>
 </div>
+</div>
+</div>
+<h3 class="selected-honors-heading">Selected Honors</h3>
+<ul class="honors-list">
+<li>
+<span class="honor-title">Second-Class Academic Excellence Scholarship, Tsinghua University</span>
+<span class="honor-date">2024</span>
+</li>
+<li>
+<span class="honor-title">Outstanding Graduate of Beijing Municipality (Top 5%, 19/380)</span>
+<span class="honor-date">2022</span>
+</li>
+<li>
+<span class="honor-title">Wu Fu–Zhenhua Transportation Education Excellent Student Award (Top 0.1%, 1/1520)</span>
+<span class="honor-date">2021</span>
+</li>
+<li>
+<span class="honor-title">Zhan Tianyou Scholarship (Top 0.2%, 2/1520; Awarded Twice)</span>
+<span class="honor-date">2020, 2021</span>
+</li>
+<li>
+<span class="honor-title">Zhixing Scholarship / President's Scholarship (Top 0.1%, 10/16800)</span>
+<span class="honor-date">2020</span>
+</li>
+</ul>
 </section>
 <section id="education">
 <h2>Education</h2>
