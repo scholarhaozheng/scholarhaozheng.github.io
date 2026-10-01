@@ -1013,13 +1013,238 @@
 #skills .interest-tags { margin-top: 8px; }
 </style>
 <style>
-</style></head>
+</style>
+<style>
+/* =========================================================
+   Mobility Computation Lab — featured homepage placement
+   Additive update only: existing sections and entries are retained.
+   ========================================================= */
+nav .nav-container {
+    max-width: 1280px;
+}
+
+nav .nav-links a {
+    padding-left: 9px;
+    padding-right: 9px;
+    font-size: 0.95em;
+}
+
+.nav-links a.nav-featured {
+    margin-left: 3px;
+    border: 1px solid #bfd0e1;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.nav-links a.nav-featured:hover {
+    background: #dfeaf5;
+    border-color: #a9bfd4;
+    color: #123754;
+}
+
+.profile-project-link {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.profile-project-link:hover {
+    color: #123754;
+}
+
+.button-icon.button-primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #ffffff;
+    font-weight: 700;
+    box-shadow: 0 3px 8px rgba(31, 78, 121, 0.18);
+}
+
+.button-icon.button-primary:hover {
+    background: #173f63;
+    border-color: #173f63;
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.mobility-feature {
+    position: relative;
+    margin: 20px 0 8px 0;
+    padding: 24px 26px;
+    border: 1px solid #cbd9e7;
+    border-left: 6px solid var(--accent);
+    border-radius: 10px;
+    background: linear-gradient(135deg, #f5f9fd 0%, #ffffff 72%);
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06);
+    overflow: hidden;
+}
+
+.mobility-feature::after {
+    content: "";
+    position: absolute;
+    top: -58px;
+    right: -38px;
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    background: rgba(31, 78, 121, 0.05);
+    pointer-events: none;
+}
+
+.mobility-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 8px;
+    color: var(--accent);
+    font-size: 0.82em;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.mobility-title-row {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.mobility-title {
+    margin: 0;
+    color: #16212b;
+    font-size: 1.68em;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.mobility-subtitle {
+    margin-top: 5px;
+    color: #4b6073;
+    font-size: 1.02em;
+    font-weight: 600;
+}
+
+.mobility-status {
+    flex-shrink: 0;
+    display: inline-block;
+    padding: 5px 11px;
+    border: 1px solid #c9d8e6;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #3d5870;
+    font-size: 0.88em;
+    font-weight: 700;
+}
+
+.mobility-description {
+    position: relative;
+    z-index: 1;
+    max-width: 880px;
+    margin: 14px 0 12px 0;
+    color: #334155;
+    line-height: 1.68;
+}
+
+.mobility-facts {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: 0 0 15px 0;
+}
+
+.mobility-facts span {
+    display: inline-block;
+    padding: 4px 9px;
+    border: 1px solid #d4e0ec;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.86);
+    color: #39536b;
+    font-size: 0.88em;
+}
+
+.mobility-links {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.mobility-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 12px;
+    border: 1px solid #c7d5e4;
+    border-radius: 7px;
+    background: #ffffff;
+    color: #254d70;
+    font-size: 0.93em;
+    font-weight: 700;
+}
+
+.mobility-links a.primary {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: #ffffff;
+}
+
+.mobility-links a:hover {
+    background: #eef4fa;
+    border-color: #aebfd0;
+    color: #173f63;
+}
+
+.mobility-links a.primary:hover {
+    background: #173f63;
+    border-color: #173f63;
+    color: #ffffff;
+}
+
+#experience .exp-card.featured-project,
+#research .exp-card.featured-project {
+    border-left-color: var(--accent) !important;
+    background: linear-gradient(to right, #f7fbff, #ffffff 34%) !important;
+}
+
+@media (max-width: 900px) {
+    .mobility-feature {
+        padding: 21px 20px;
+    }
+
+    .mobility-title-row {
+        display: block;
+    }
+
+    .mobility-status {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 680px) {
+    .mobility-title {
+        font-size: 1.42em;
+    }
+
+    .mobility-links a {
+        width: 100%;
+        justify-content: center;
+    }
+}
+</style>
+</head>
 <body>
 <nav>
 <div class="nav-container">
 <a class="nav-name" href="#about">Hao Zheng</a>
 <div class="nav-links">
 <a href="#about">About</a>
+<a class="nav-featured" href="https://scholarhaozheng.github.io/mobility-network-lab/" target="_blank" rel="noopener noreferrer">Mobility Lab ↗</a>
 <a href="#news">News</a>
 <a href="#publications">Publications</a>
 <a href="#manuscripts">Manuscripts</a>
@@ -1034,7 +1259,7 @@
 </div>
 </nav>
 <div class="container">
-<!-- Content synchronized with CV_of_Hao_Zheng.pdf (August 2026 update). -->
+<!-- Content synchronized with CV_of_Hao_Zheng.pdf and Mobility Computation Lab (October 2026 update). -->
 <section class="profile-section header-o1" id="about">
 <div class="profile-photo"><img alt="Hao Zheng's photo" src="Hao_Zheng_photo.jpg"/></div>
 <div class="profile-info"><div class="profile-identity"><h1>Hao Zheng</h1><div class="profile-role"><strong>Transportation Systems · Optimization · Machine Learning</strong><br/>
@@ -1042,12 +1267,37 @@ M.S. in Transportation Engineering, Tsinghua University, 2025<br/>
 <span class="service-line">Research Assistant, Beijing Jiaotong University</span><br/>
 <span class="service-line">Associate Member, PIARC Technical Committee 1.1, World Road Association</span></div></div>
 <div class="profile-contact">Email: <a href="mailto:scholarhaozheng@gmail.com">scholarhaozheng@gmail.com</a> | Tsinghua Alumni: <a href="mailto:zhengh22@tsinghua.org.cn">zhengh22@tsinghua.org.cn</a><br/></div><div class="button-group">
+<a class="button-icon button-primary" href="https://scholarhaozheng.github.io/mobility-network-lab/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-diagram-project"></i>Mobility Lab</a>
 <a class="button-icon" href="https://scholar.google.com/citations?user=5XSrtxwAAAAJ" target="_blank"><i class="fa-solid fa-graduation-cap"></i>Google Scholar</a>
 <a class="button-icon" href="https://orcid.org/0009-0004-8845-5137" target="_blank"><i class="fa-brands fa-orcid"></i>ORCID</a>
 <a class="button-icon" href="https://github.com/scholarhaozheng" target="_blank"><i class="fa-brands fa-github"></i>GitHub</a>
 <a class="button-icon" href="CV_of_Hao_Zheng.pdf" target="_blank"><i class="fa-solid fa-file-pdf"></i>CV</a>
-</div><div class="intro-note">My research develops optimization, machine learning, and network-modeling methods for transportation systems. Current work spans scalable traffic assignment, public urban mobility data, urban heat and cycling-network resilience, urban rail forecasting, multi-modal logistics, microscopic traffic simulation, and pavement asset management, with an emphasis on reproducible, interpretable, and decision-oriented computational methods.</div><div class="interest-tags"><span class="interest-tag">Time Series Forecasting</span><span class="interest-tag">Graph Neural Networks</span><span class="interest-tag">Sequence-to-Sequence Models</span><span class="interest-tag">Transfer Learning</span><span class="interest-tag">Knowledge-Guided Learning</span><span class="interest-tag">Multi-Task Learning</span><span class="interest-tag">Discrete Choice Modeling</span><span class="interest-tag">Mixed-Integer Programming</span><span class="interest-tag">Bilevel Optimization</span><span class="interest-tag">Column Generation</span><span class="interest-tag">Branch-and-Price</span><span class="interest-tag">VRP/VRPTW</span><span class="interest-tag">ALNS</span><span class="interest-tag">Tabu Search</span><span class="interest-tag">Space-Time Network Modeling</span><span class="interest-tag">Traffic Assignment</span><span class="interest-tag">Microscopic Traffic Simulation</span><span class="interest-tag">Travel Demand Modeling</span></div></div>
+</div><div class="intro-note">My research develops optimization, machine learning, and network-modeling methods for transportation systems. Current work spans scalable traffic assignment, public urban mobility data, urban heat and cycling-network resilience, urban rail forecasting, multi-modal logistics, microscopic traffic simulation, and pavement asset management, with an emphasis on reproducible, interpretable, and decision-oriented computational methods.</div><div class="interest-tags"><span class="interest-tag">Time Series Forecasting</span><span class="interest-tag">Graph Neural Networks</span><span class="interest-tag">Sequence-to-Sequence Models</span><span class="interest-tag">Transfer Learning</span><span class="interest-tag">Knowledge-Guided Learning</span><span class="interest-tag">Multi-Task Learning</span><span class="interest-tag">Discrete Choice Modeling</span><span class="interest-tag">Mixed-Integer Programming</span><span class="interest-tag">Bilevel Optimization</span><span class="interest-tag">Column Generation</span><span class="interest-tag">Branch-and-Price</span><span class="interest-tag">VRP/VRPTW</span><span class="interest-tag">ALNS</span><span class="interest-tag">Tabu Search</span><span class="interest-tag">Space-Time Network Modeling</span><span class="interest-tag">Traffic Assignment</span><span class="interest-tag">Frank–Wolfe</span><span class="interest-tag">GMNS</span><span class="interest-tag">Microscopic Traffic Simulation</span><span class="interest-tag">Travel Demand Modeling</span></div></div>
 </section>
+
+<aside class="mobility-feature" aria-labelledby="mobility-lab-feature-title">
+<div class="mobility-kicker"><i class="fa-solid fa-star" aria-hidden="true"></i> Featured open-source research project</div>
+<div class="mobility-title-row">
+<div>
+<div class="mobility-title" id="mobility-lab-feature-title">Mobility Computation Lab</div>
+<div class="mobility-subtitle">City networks · travel demand · reproducible network computation</div>
+</div>
+<span class="mobility-status">2025 – Present</span>
+</div>
+<p class="mobility-description">Developed by Hao Zheng under the guidance of Prof. Xuesong Zhou, Mobility Computation Lab connects city networks, travel demand, and reproducible network computation through documented Boston, Sioux Falls, and Hong Kong cases. The open-source project uses GMNS as a portable network and data contract and includes static traffic-assignment and finite time-expanded computational workflows.</p>
+<div class="mobility-facts" aria-label="Mobility Computation Lab highlights">
+<span>Boston · Sioux Falls · Hong Kong</span>
+<span>GMNS</span>
+<span>Frank–Wolfe</span>
+<span>Path-based traffic assignment</span>
+<span>Column generation</span>
+<span>Reproducible checks</span>
+</div>
+<div class="mobility-links">
+<a class="primary" href="https://scholarhaozheng.github.io/mobility-network-lab/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>Explore the Project</a>
+<a href="https://github.com/scholarhaozheng/mobility-network-lab" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i>Source Repository</a>
+</div>
+</aside>
 <section id="news">
 <h2>News</h2>
 <div class="news-shell">
@@ -1288,6 +1538,18 @@ Participated in the <strong>TRB 105th Annual Meeting</strong>.
 </section>
 <section id="experience">
 <h2>Professional Experience &amp; Appointments</h2>
+<div class="exp-card featured-project">
+<p><span class="item-title">Open-Source Project Developer, Mobility Computation Lab</span> <span class="right-float">2025 – Present</span></p>
+<p class="item-subtitle">Developed under the guidance of Prof. Xuesong Zhou</p>
+<div class="pub-links">
+<a href="https://scholarhaozheng.github.io/mobility-network-lab/" target="_blank" rel="noopener noreferrer"><i aria-hidden="true" class="fa-solid fa-globe"></i><span>Project Site</span></a>
+<a href="https://github.com/scholarhaozheng/mobility-network-lab" target="_blank" rel="noopener noreferrer"><i aria-hidden="true" class="fa-brands fa-github"></i><span>Source Repository</span></a>
+</div>
+<ul class="description-list">
+<li>Develop and maintain an open-source project linking documented city networks, travel-demand inputs, traffic-assignment methods, and independently checkable computational outputs.</li>
+</ul>
+</div>
+
 <div class="exp-card">
 <p><span class="item-title">Research Assistant</span> <span class="right-float">07/2025 – Present</span></p>
 <p class="item-subtitle">Beijing Jiaotong University · Modernization Laboratory for Intelligent Rail Transit Organization and Management</p>
@@ -1306,6 +1568,19 @@ Participated in the <strong>TRB 105th Annual Meeting</strong>.
 </section>
 <section id="research">
 <h2>Research</h2>
+
+<div class="exp-card featured-project">
+<p><span class="item-title">Mobility Computation Lab: Reproducible City-Network Modeling and Scalable Traffic Assignment</span> <span class="right-float">2025 – Present</span></p>
+<p class="item-subtitle">Open-source research project developed under the guidance of Prof. Xuesong Zhou</p>
+<div class="pub-links">
+<a href="https://scholarhaozheng.github.io/mobility-network-lab/" target="_blank" rel="noopener noreferrer"><i aria-hidden="true" class="fa-solid fa-globe"></i><span>Project Site</span></a>
+<a href="https://github.com/scholarhaozheng/mobility-network-lab" target="_blank" rel="noopener noreferrer"><i aria-hidden="true" class="fa-brands fa-github"></i><span>Code</span></a>
+</div>
+<ul class="description-list">
+<li>Built a GMNS-based research environment connecting city networks, hierarchical zones, supported demand and observation inputs, and network computation across documented Boston, Sioux Falls, and Hong Kong cases.</li>
+<li>Implemented and evaluated reproducible static and finite-network workflows including Frank–Wolfe, path-based assignment, column generation, Lagrangian, and ADMM components with explicit case scope and independent checks.</li>
+</ul>
+</div>
 <div class="exp-card">
 <p><span class="item-title">Computational Benchmarking of Scalable Traffic Assignment on Open Transportation Networks</span> <span class="right-float">2025 – Present</span></p>
 <p class="item-subtitle">Research Collaborator with Prof. Xuesong Zhou</p>
@@ -1396,6 +1671,9 @@ Participated in the <strong>TRB 105th Annual Meeting</strong>.
 <h2>Software</h2>
 <p class="section-note">Software and code are continually updated on <a href="https://github.com/scholarhaozheng" target="_blank">github.com/scholarhaozheng</a>.</p>
 <ul class="simple-list">
+<li>
+<p><span class="item-title"><a href="https://scholarhaozheng.github.io/mobility-network-lab/" target="_blank" rel="noopener noreferrer">Mobility Computation Lab</a></span> (Open-source research platform) <span class="right-float">2025 – Present</span> — GMNS-based city-network, demand, traffic-assignment, and reproducible computation workflows. <a href="https://github.com/scholarhaozheng/mobility-network-lab" target="_blank" rel="noopener noreferrer">Source repository</a>.</p>
+</li>
 <li>
 <p>
 <span class="item-title"><a href="https://github.com/scholarhaozheng/Pave-ML-Multi-Task-Learning-for-Pavement-Performance-Indicators" target="_blank">Pave-ML-Multi-Task Learning for Pavement Performance Indicators</a></span> (Python)
